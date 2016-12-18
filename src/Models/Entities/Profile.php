@@ -61,4 +61,22 @@ class Profile extends Model
         return (bool) $this->avatar;
     }
 
+    protected static function boot()
+    {
+        static::saving(function ($model) {
+            $model->avatar_type = $model->avatar() ? $model->avatar()->getTypeSlug() : null;
+            $model->avatar_data = $model->avatar_type ? $model->avatar()->getData() : null;
+
+            return $model->validate();
+        });
+
+        static::deleting(function ($model) {
+            if ($avatar = $model->avatar()) {
+                $avatar->delete();
+            }
+
+            return $model->validate();
+        });
+    }
+
 }
