@@ -16,7 +16,9 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "konekt/concord": "dev-master"
+        "konekt/concord": "dev-master",
+        "konekt/address": "dev-master",
+        "konekt/enum": "~1.2"
     },
     "autoload": {
         "psr-4": { "Konekt\\User\\": "src"}
