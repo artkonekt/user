@@ -19,7 +19,7 @@ class ExtendUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->enum('type', array_values(UserType::toArray()))->default(UserType::__default);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->dateTime('last_login_at')->nullable();
         });
     }
