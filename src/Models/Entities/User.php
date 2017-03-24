@@ -14,12 +14,13 @@ namespace Konekt\User\Models\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Konekt\User\Contracts\UserInterface;
 
 /**
  * User Entity class
  *
  */
-class User extends Authenticatable
+class User extends Authenticatable implements UserInterface
 {
     use Notifiable;
 

@@ -14,6 +14,7 @@ namespace Konekt\User\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Konekt\User\Contracts\AvatarResolverInterface;
+use Konekt\User\Contracts\UserInterface;
 use Konekt\User\Models\Factories\AvatarResolverFactory;
 
 class Profile extends Model
@@ -30,7 +31,7 @@ class Profile extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'country_id');
+        return $this->belongsTo(concord()->model(UserInterface::class), 'country_id');
     }
 
     /**
