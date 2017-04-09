@@ -15,7 +15,7 @@ namespace Konekt\User\Contracts;
 
 use Illuminate\Http\UploadedFile;
 
-interface AvatarResolverInterface
+interface AvatarResolver
 {
     /**
      * Return the specific type's

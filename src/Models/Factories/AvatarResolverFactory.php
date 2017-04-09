@@ -13,7 +13,7 @@
 namespace Konekt\User\Models\Factories;
 
 
-use Konekt\User\Contracts\AvatarResolverInterface;
+use Konekt\User\Contracts\AvatarResolver;
 
 class AvatarResolverFactory
 {
@@ -23,11 +23,11 @@ class AvatarResolverFactory
      * @param string $typeSlug
      * @param null   $data
      *
-     * @return AvatarResolverInterface
+     * @return AvatarResolver
      */
     public static function create(string $typeSlug, $data = null)
     {
-        /** @var AvatarResolverInterface $avatarResolver */
+        /** @var AvatarResolver $avatarResolver */
         $avatarResolver = app(slug_to_classpath($typeSlug));
 
         if ($avatarResolver && $data) {

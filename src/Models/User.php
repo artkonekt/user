@@ -10,17 +10,17 @@
  */
 
 
-namespace Konekt\User\Models\Entities;
+namespace Konekt\User\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Konekt\User\Contracts\UserInterface;
+use Konekt\User\Contracts\User as UserContract;
 
 /**
  * User Entity class
  *
  */
-class User extends Authenticatable implements UserInterface
+class User extends Authenticatable implements UserContract
 {
     use Notifiable;
 
@@ -49,10 +49,14 @@ class User extends Authenticatable implements UserInterface
         'password', 'remember_token',
     ];
 
-
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'user_id', 'id');
+        return $this->hasOne(ProfileProxy::realClass(), 'id', 'id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
     }
 
 

@@ -10,14 +10,14 @@
  */
 
 
-namespace Konekt\User\Models\Entities;
+namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Konekt\User\Contracts\AvatarResolverInterface;
-use Konekt\User\Contracts\UserInterface;
+use Konekt\User\Contracts\AvatarResolver;
+use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Models\Factories\AvatarResolverFactory;
 
-class Profile extends Model
+class Profile extends Model implements ProfileContract
 {
     /**
      * The database table used by the model.
@@ -26,18 +26,18 @@ class Profile extends Model
      */
     protected $table = 'profiles';
 
-    /** @var  AvatarResolverInterface|null */
+    /** @var  AvatarResolver|null */
     protected $avatarResolver;
 
     public function user()
     {
-        return $this->belongsTo(concord()->model(UserInterface::class), 'country_id');
+        return $this->belongsTo(UserProxy::realClass(), 'user_id');
     }
 
     /**
      * Returns the avatar object of the user
      *
-     * @return AvatarResolverInterface|null
+     * @return AvatarResolver|null
      */
     public function avatar()
     {
@@ -59,25 +59,25 @@ class Profile extends Model
      */
     public function hasAvatar()
     {
-        return (bool) $this->avatar;
+        return (bool) $this->avatar();
     }
 
     protected static function boot()
     {
-        static::saving(function ($model) {
-            $model->avatar_type = $model->avatar() ? $model->avatar()->getTypeSlug() : null;
-            $model->avatar_data = $model->avatar_type ? $model->avatar()->getData() : null;
-
-            return $model->validate();
-        });
-
-        static::deleting(function ($model) {
-            if ($avatar = $model->avatar()) {
-                $avatar->delete();
-            }
-
-            return $model->validate();
-        });
+//        static::saving(function ($model) {
+//            $model->avatar_type = $model->avatar() ? $model->avatar()->getTypeSlug() : null;
+//            $model->avatar_data = $model->avatar_type ? $model->avatar()->getData() : null;
+//
+//            return $model->validate();
+//        });
+//
+//        static::deleting(function ($model) {
+//            if ($avatar = $model->avatar) {
+//                $avatar->delete();
+//            }
+//
+//            return $model->validate();
+//        });
     }
 
 }

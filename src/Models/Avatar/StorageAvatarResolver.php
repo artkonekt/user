@@ -16,7 +16,7 @@ namespace Konekt\User\Models\Avatar;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class StorageAvatarResolver extends AbstractAvatarResolver
+class StorageAvatarResolver extends BaseAvatarResolver
 {
 
     /**

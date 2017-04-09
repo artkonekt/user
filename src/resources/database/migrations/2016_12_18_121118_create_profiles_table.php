@@ -16,8 +16,8 @@ class CreateProfilesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('person_id')->unsigned();
-            $table->string('avatar_type');
-            $table->text('avatar_data');
+            $table->string('avatar_type')->nullable();
+            $table->text('avatar_data')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

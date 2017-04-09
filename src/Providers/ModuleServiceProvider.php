@@ -14,8 +14,10 @@ namespace Konekt\User\Providers;
 
 
 use Konekt\Concord\AbstractModuleServiceProvider;
-use Konekt\User\Contracts\UserInterface;
-use Konekt\User\Models\Entities\User;
+use Konekt\User\Models\Profile;
+use Konekt\User\Models\ProfileProxy;
+use Konekt\User\Models\User;
+use Konekt\User\Models\UserProxy;
 
 class ModuleServiceProvider extends AbstractModuleServiceProvider
 {
@@ -23,7 +25,8 @@ class ModuleServiceProvider extends AbstractModuleServiceProvider
     {
         parent::register();
 
-        $this->app->concord->useModel(UserInterface::class, User::class);
+        UserProxy::useModelClass(User::class);
+        ProfileProxy::useModelClass(Profile::class);
     }
 
 

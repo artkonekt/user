@@ -1,11 +1,11 @@
 <?php
 /**
- * Contains the UserInterface interface.
+ * Contains the Profile interface.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
- * @since       2017-03-24
+ * @since       2017-04-08
  *
  */
 
@@ -13,7 +13,7 @@
 namespace Konekt\User\Contracts;
 
 
-interface UserInterface
+interface Profile
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the AbstractAvatarResolver class.
+ * Contains the BaseAvatarResolver class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -14,9 +14,9 @@ namespace Konekt\User\Models\Avatar;
 
 
 use Illuminate\Http\UploadedFile;
-use Konekt\User\Contracts\AvatarResolverInterface;
+use Konekt\User\Contracts\AvatarResolver;
 
-abstract class AbstractAvatarResolver implements AvatarResolverInterface
+abstract class BaseAvatarResolver implements AvatarResolver
 {
     /** @var  string */
     protected $data;
