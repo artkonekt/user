@@ -15,9 +15,9 @@ namespace Konekt\User\Providers;
 
 use Konekt\Concord\AbstractModuleServiceProvider;
 use Konekt\User\Models\Profile;
-use Konekt\User\Models\ProfileProxy;
+use Konekt\User\Models\ProfileRepository;
 use Konekt\User\Models\User;
-use Konekt\User\Models\UserProxy;
+use Konekt\User\Models\UserRepository;
 
 class ModuleServiceProvider extends AbstractModuleServiceProvider
 {
@@ -25,8 +25,8 @@ class ModuleServiceProvider extends AbstractModuleServiceProvider
     {
         parent::register();
 
-        UserProxy::useModelClass(User::class);
-        ProfileProxy::useModelClass(Profile::class);
+        UserRepository::useModelClass(User::class);
+        ProfileRepository::useModelClass(Profile::class);
     }
 
 

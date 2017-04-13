@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the UserProxy class.
+ * Contains the UserRepository class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
@@ -12,9 +12,9 @@
 
 namespace Konekt\User\Models;
 
-use Konekt\Concord\Database\ModelProxy;
+use Konekt\Concord\Database\Repository;
 
-class UserProxy extends ModelProxy
+class UserRepository extends Repository
 {
 
 }

@@ -51,7 +51,7 @@ class User extends Authenticatable implements UserContract
 
     public function profile()
     {
-        return $this->hasOne(ProfileProxy::realClass(), 'id', 'id');
+        return $this->hasOne(ProfileRepository::modelClass(), 'id', 'id');
     }
 
     public function scopeActive($query)

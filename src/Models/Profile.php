@@ -31,7 +31,7 @@ class Profile extends Model implements ProfileContract
 
     public function user()
     {
-        return $this->belongsTo(UserProxy::realClass(), 'user_id');
+        return $this->belongsTo(UserRepository::modelClass(), 'user_id');
     }
 
     /**
