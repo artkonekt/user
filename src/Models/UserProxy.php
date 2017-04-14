@@ -12,9 +12,9 @@
 
 namespace Konekt\User\Models;
 
-use Konekt\Concord\Database\Repository;
+use Konekt\Concord\Database\ModelProxy;
 
-class UserRepository extends Repository
+class UserProxy extends ModelProxy
 {
 
 }

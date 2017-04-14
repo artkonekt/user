@@ -13,9 +13,9 @@
 namespace Konekt\User\Models;
 
 
-use Konekt\Concord\Database\Repository;
+use Konekt\Concord\Database\ModelProxy;
 
-class ProfileRepository extends Repository
+class ProfileProxy extends ModelProxy
 {
 
 }

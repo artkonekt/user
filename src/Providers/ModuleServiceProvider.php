@@ -13,21 +13,17 @@
 namespace Konekt\User\Providers;
 
 
-use Konekt\Concord\AbstractModuleServiceProvider;
+use Konekt\Concord\BaseModuleServiceProvider;
 use Konekt\User\Models\Profile;
-use Konekt\User\Models\ProfileRepository;
 use Konekt\User\Models\User;
-use Konekt\User\Models\UserRepository;
 
-class ModuleServiceProvider extends AbstractModuleServiceProvider
+class ModuleServiceProvider extends BaseModuleServiceProvider
 {
-    public function register()
-    {
-        parent::register();
-
-        UserRepository::useModelClass(User::class);
-        ProfileRepository::useModelClass(Profile::class);
-    }
+    /** @var array */
+    protected $models = [
+        User::class,
+        Profile::class
+    ];
 
 
 }
