@@ -12,6 +12,7 @@
 
 namespace Konekt\User\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Konekt\User\Contracts\User as UserContract;
@@ -22,7 +23,7 @@ use Konekt\User\Contracts\User as UserContract;
  */
 class User extends Authenticatable implements UserContract
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -37,8 +38,10 @@ class User extends Authenticatable implements UserContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'type', 'is_active'
     ];
+
+    protected $dates = ['created_at', 'updated_at', 'last_login_at'];
 
     /**
      * The attributes that should be hidden for arrays.

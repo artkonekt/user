@@ -21,6 +21,8 @@ class ExtendUsersTable extends Migration
             $table->enum('type', array_values(UserType::toArray()))->default(UserType::__default);
             $table->boolean('is_active')->default(true);
             $table->dateTime('last_login_at')->nullable();
+            $table->integer('login_count')->unsigned()->nullable()->default(0);
+            $table->softDeletes();
         });
     }
 
