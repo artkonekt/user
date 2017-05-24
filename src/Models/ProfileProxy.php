@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the ProfileRepository class.
+ * Contains the ProfileProxy class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
@@ -13,7 +13,7 @@
 namespace Konekt\User\Models;
 
 
-use Konekt\Concord\Database\ModelProxy;
+use Konekt\Concord\Proxies\ModelProxy;
 
 class ProfileProxy extends ModelProxy
 {
