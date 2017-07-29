@@ -15,5 +15,8 @@ namespace Konekt\User\Contracts;
 
 interface User
 {
+    public function inactivate(User $user);
+
+    public function activate(User $user);
 
 }

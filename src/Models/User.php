@@ -16,6 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Konekt\User\Contracts\User as UserContract;
+use Konekt\User\Events\UserWasActivated;
+use Konekt\User\Events\UserWasCreated;
+use Konekt\User\Events\UserWasInactivated;
 
 /**
  * User Entity class
@@ -52,6 +55,10 @@ class User extends Authenticatable implements UserContract
         'password', 'remember_token',
     ];
 
+    protected $events = [
+        'created' => UserWasCreated::class
+    ];
+
     public function profile()
     {
         return $this->hasOne(ProfileProxy::modelClass(), 'id', 'id');
@@ -62,5 +69,20 @@ class User extends Authenticatable implements UserContract
         return $query->where('is_active', true);
     }
 
+    public function inactivate()
+    {
+        $this->is_active = false;
+        $this->save();
+
+        event(new UserWasInactivated($this));
+    }
+
+    public function activate()
+    {
+        $this->is_active = true;
+        $this->save();
+
+        event(new UserWasActivated($this));
+    }
 
 }
