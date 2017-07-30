@@ -18,6 +18,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Events\UserWasActivated;
 use Konekt\User\Events\UserWasCreated;
+use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
 
 /**
@@ -56,7 +57,8 @@ class User extends Authenticatable implements UserContract
     ];
 
     protected $events = [
-        'created' => UserWasCreated::class
+        'created' => UserWasCreated::class,
+        'deleted' => UserWasDeleted::class
     ];
 
     public function profile()

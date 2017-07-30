@@ -22,5 +22,18 @@
     },
     "autoload": {
         "psr-4": { "Konekt\\User\\": "src"}
+    },
+    "require-dev": {
+        "monolog/monolog": "^1.22",
+        "orchestra/testbench": "~3.4.2",
+        "phpunit/phpunit": "~6.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konekt\\User\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
