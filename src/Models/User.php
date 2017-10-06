@@ -15,6 +15,7 @@ namespace Konekt\User\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Konekt\Enum\Eloquent\CastsEnums;
 use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Events\UserWasActivated;
 use Konekt\User\Events\UserWasCreated;
@@ -27,7 +28,7 @@ use Konekt\User\Events\UserWasInactivated;
  */
 class User extends Authenticatable implements UserContract
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, CastsEnums;
 
     /**
      * The database table used by the model.
@@ -46,6 +47,10 @@ class User extends Authenticatable implements UserContract
     ];
 
     protected $dates = ['created_at', 'updated_at', 'last_login_at'];
+
+    protected $enums = [
+        'type' => UserType::class
+    ];
 
     /**
      * The attributes that should be hidden for arrays.

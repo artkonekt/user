@@ -23,8 +23,9 @@ class UserEventsTest extends TestCase
 
     /**
      * Disabled since Eloquent lifecycle event detection is not working properly
+     * @dont_test
      */
-    public function notestCreateEvent()
+    public function creating_a_user_fires_user_was_created_event()
     {
         $this->expectsEvents(UserWasCreated::class);
 
@@ -35,7 +36,10 @@ class UserEventsTest extends TestCase
         ]);
     }
 
-    public function testInactivateEvent()
+    /**
+     * @test
+     */
+    public function inactivating_a_user_fires_user_was_inactivated_event()
     {
         $this->expectsEvents(UserWasInactivated::class);
 
@@ -50,8 +54,10 @@ class UserEventsTest extends TestCase
 
     /**
      * Disabled since Eloquent lifecycle event detection is not working properly
+     *
+     * @dont_test
      */
-    public function notestDeletedEvent()
+    public function deleting_a_user_fires_user_was_deleted_event()
     {
         $this->expectsEvents([
             UserWasCreated::class,

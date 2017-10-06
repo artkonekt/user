@@ -4,6 +4,7 @@
     "type": "library",
     "keywords": ["laravel", "concord", "concord-module", "user"],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "license": "MIT",
     "authors": [
         {
@@ -17,8 +18,7 @@
     "require": {
         "php": ">=7.0.0",
         "konekt/concord": "dev-master",
-        "konekt/address": "dev-master",
-        "konekt/enum": "^2.0.1"
+        "konekt/address": "dev-master"
     },
     "autoload": {
         "psr-4": { "Konekt\\User\\": "src"}

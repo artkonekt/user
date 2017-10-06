@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Profile entity class.
+ * Contains the Profile model class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
