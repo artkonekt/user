@@ -49,7 +49,7 @@ class User extends Authenticatable implements UserContract
     protected $dates = ['created_at', 'updated_at', 'last_login_at'];
 
     protected $enums = [
-        'type' => UserType::class
+        'type' => 'UserTypeProxy@enumClass'
     ];
 
     /**
