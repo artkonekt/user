@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;

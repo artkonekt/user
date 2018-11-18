@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Tests;
 
 use Konekt\User\Contracts\UserType as UserTypeContract;

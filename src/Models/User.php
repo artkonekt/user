@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;

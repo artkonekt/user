@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Models\Avatar;
 
 use Illuminate\Http\UploadedFile;

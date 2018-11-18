@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Events;
 
 use Konekt\User\Contracts\User;

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Models;
 
 use Konekt\Concord\Proxies\EnumProxy;

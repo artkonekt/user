@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Contracts;
 
 interface UserEvent

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Contracts;
 
 use Illuminate\Http\UploadedFile;

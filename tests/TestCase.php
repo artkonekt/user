@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\User\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
