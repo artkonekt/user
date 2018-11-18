@@ -9,14 +9,11 @@
  *
  */
 
-
 namespace Konekt\User\Contracts;
-
 
 interface User
 {
     public function inactivate();
 
     public function activate();
-
 }

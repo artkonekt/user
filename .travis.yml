@@ -1,0 +1,45 @@
+language: php
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+matrix:
+  include:
+  - php: 7.0
+    env: L5_VER=4
+  - php: 7.0
+    env: L5_VER=5
+  - php: 7.1
+    env: L5_VER=4
+  - php: 7.1
+    env: L5_VER=5
+  - php: 7.1
+    env: L5_VER=6
+  - php: 7.1
+    env: L5_VER=7
+  - php: 7.2
+    env: L5_VER=4
+  - php: 7.2
+    env: L5_VER=5
+  - php: 7.2
+    env: L5_VER=6
+  - php: 7.2
+    env: L5_VER=7
+  - php: 7.3
+    env: L5_VER=4
+  - php: 7.3
+    env: L5_VER=5
+  - php: 7.3
+    env: L5_VER=6
+  - php: 7.3
+    env: L5_VER=7
+script:
+- vendor/bin/phpunit -c phpunit.xml
+before_install:
+- composer require "illuminate/support:5.${L5_VER}.*" --no-update -v
+- composer require "illuminate/console:5.${L5_VER}.*" --no-update -v
+- composer require "orchestra/testbench:3.${L5_VER}.*" --no-update -v
+install: composer install --no-interaction
+notifications:
+  email: false
+  slack:
+    secure: "vfl8o2SFRmVpi8PBqP5wrjGZhKvYJsUf9ThgcBp+IGv1FnZ/mXwU3i5XZPhxdVpB+dWuHDX2aaLYlkT+UqHaaxwYgwSvjOsDPOL1/vAMxlDLS1DKEKfocDeSfaxyWFquZfUZAhy1GxFti3CS8WAjzxLDaoOfa44t27z/5o617gO0Fa3CbCjj4Lgo4/BkCdT1pqjsUcAmZclTrrvFnBqnt8o/tTCcLjrfuqt2gXc3gjvl9oi9weLtjiSrK6a83adrR8mv0/keQn3Qe7UW6upD8VEbyhp9G5HqV6HrUxXgt3lUBfN32D2z0JxyfrPRkjo6MiOTGH9cwxogGxWrZ09RxmEjldFeO/6fpu01d6MhQl7XaKJeyJew+Q8AfSojSCC/88fLaXYsh1LBo0nW6+B5h2jo7wEFX2DPeKvxvdeFZke1p2YuCxxL6MSb19WoXA+2FH2b6hEyD1MLzAzHYITwfMrNY5es3dWsxw1mFKNdc67CZnkZPqTp14taPBCAKAtHSEZQGNAZSWduSjb4efk4fqTO5kZtO05iirpavXHHDyi/pLKDMxfpNodMPALkM5EB5rixL7fio4FnX6zjkyiP0qmb1Kur4AEzqzpKLTDFG8PaV4+QZPaUpGO3bpPrb+Zms8eIMJLi5xjMuK33YWtcAYnThmNtyog80trCrsXtoZ4="
