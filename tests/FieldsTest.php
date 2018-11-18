@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Tests;
 
-
 use Konekt\User\Contracts\UserType as UserTypeContract;
 use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
@@ -33,5 +32,4 @@ class FieldsTest extends TestCase
 
         $this->assertInstanceOf(UserTypeContract::class, $admin->type);
     }
-
 }

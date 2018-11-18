@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Models\Avatar;
 
-
 use Illuminate\Http\UploadedFile;
 use Konekt\User\Contracts\AvatarResolver;
 
@@ -64,5 +63,4 @@ abstract class BaseAvatarResolver implements AvatarResolver
      * @inheritDoc
      */
     abstract public function delete();
-
 }

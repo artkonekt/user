@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Contracts;
 
-
 use Illuminate\Http\UploadedFile;
 
 interface AvatarResolver
@@ -69,5 +68,4 @@ interface AvatarResolver
      * @return bool
      */
     public function delete();
-
 }

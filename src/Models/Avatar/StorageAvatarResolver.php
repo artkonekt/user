@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Models\Avatar;
 
-
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,6 +57,4 @@ class StorageAvatarResolver extends BaseAvatarResolver
     {
         return Storage::delete($this->getData());
     }
-
-
 }

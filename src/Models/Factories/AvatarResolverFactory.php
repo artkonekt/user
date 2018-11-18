@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Models\Factories;
 
-
 use Konekt\User\Contracts\AvatarResolver;
 
 class AvatarResolverFactory
@@ -36,5 +35,4 @@ class AvatarResolverFactory
 
         return $avatarResolver;
     }
-
 }

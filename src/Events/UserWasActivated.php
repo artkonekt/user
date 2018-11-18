@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Events;
 
-
 use Konekt\User\Contracts\User;
 use Konekt\User\Contracts\UserEvent;
 
@@ -32,6 +31,4 @@ class UserWasActivated implements UserEvent
     {
         return $this->user;
     }
-
-
 }

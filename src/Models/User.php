@@ -91,5 +91,4 @@ class User extends Authenticatable implements UserContract
 
         event(new UserWasActivated($this));
     }
-
 }

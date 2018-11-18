@@ -27,7 +27,6 @@ class CreateProfilesTable extends Migration
             $table->foreign('person_id')
                 ->references('id')
                 ->on('persons');
-
         });
     }
 

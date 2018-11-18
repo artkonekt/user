@@ -12,10 +12,8 @@
 
 namespace Konekt\User\Models;
 
-
 use Konekt\Concord\Proxies\ModelProxy;
 
 class ProfileProxy extends ModelProxy
 {
-
 }

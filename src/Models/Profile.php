@@ -79,5 +79,4 @@ class Profile extends Model implements ProfileContract
 //            return $model->validate();
 //        });
     }
-
 }

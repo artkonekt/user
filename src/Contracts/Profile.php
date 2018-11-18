@@ -12,8 +12,6 @@
 
 namespace Konekt\User\Contracts;
 
-
 interface Profile
 {
-
 }

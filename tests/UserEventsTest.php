@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Tests;
 
-
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
@@ -72,5 +71,4 @@ class UserEventsTest extends TestCase
 
         $user->delete();
     }
-
 }

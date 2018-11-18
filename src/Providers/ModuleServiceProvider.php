@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Providers;
 
-
 use Konekt\Concord\BaseModuleServiceProvider;
 use Konekt\User\Models\Profile;
 use Konekt\User\Models\User;
@@ -30,6 +29,4 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     protected $enums = [
         UserType::class
     ];
-
-
 }

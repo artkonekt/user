@@ -12,7 +12,6 @@
 
 namespace Konekt\User\Models;
 
-
 use Konekt\Enum\Enum;
 use Konekt\User\Contracts\UserType as UserTypeContract;
 
@@ -22,5 +21,4 @@ class UserType extends Enum implements UserTypeContract
 
     const ADMIN     = 'admin';
     const CLIENT    = 'client';
-
 }
