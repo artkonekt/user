@@ -11,12 +11,14 @@
 
 namespace Konekt\User;
 
+use Konekt\User\Avatar\Gravatar;
 use Konekt\User\Avatar\StorageAvatar;
 
 class AvatarTypes
 {
     private const BUILT_IN_TYPES = [
-        'storage' => StorageAvatar::class
+        'storage'  => StorageAvatar::class,
+        'gravatar' => Gravatar::class
     ];
 
     private static $registry = self::BUILT_IN_TYPES;

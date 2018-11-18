@@ -37,8 +37,8 @@ class StorageAvatarTest extends TestCase
     {
         $uploadedFile = UploadedFile::fake()->image('willbedeleted.jpg', 100, 100);
         $avatar       = StorageAvatar::upload($uploadedFile);
+        $fileName     = $avatar->getFilename();
 
-        $fileName = $avatar->getFilename();
         $this->assertTrue(Storage::exists($fileName));
 
         $avatar->delete();
@@ -62,8 +62,7 @@ class StorageAvatarTest extends TestCase
     public function works_with_the_profile_model()
     {
         /** @var Profile $profile */
-        $profile = factory(Profile::class)->create();
-
+        $profile      = factory(Profile::class)->create();
         $uploadedFile = UploadedFile::fake()->image('test_avatar.jpg', 85, 85);
         $avatar       = StorageAvatar::upload($uploadedFile);
 
