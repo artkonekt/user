@@ -23,7 +23,7 @@ class StorageAvatarTest extends TestCase
     public function can_be_created_via_upload()
     {
         $uploadedFile = UploadedFile::fake()->image('test_avatar.jpg', 85, 85);
-        $avatar = StorageAvatar::upload($uploadedFile);
+        $avatar       = StorageAvatar::upload($uploadedFile);
 
         $this->assertInstanceOf(Avatar::class, $avatar);
         $this->assertInstanceOf(StorageAvatar::class, $avatar);
@@ -36,7 +36,7 @@ class StorageAvatarTest extends TestCase
     public function can_be_deleted_and_the_file_disappears()
     {
         $uploadedFile = UploadedFile::fake()->image('willbedeleted.jpg', 100, 100);
-        $avatar = StorageAvatar::upload($uploadedFile);
+        $avatar       = StorageAvatar::upload($uploadedFile);
 
         $fileName = $avatar->getFilename();
         $this->assertTrue(Storage::exists($fileName));
@@ -52,7 +52,7 @@ class StorageAvatarTest extends TestCase
         config([StorageAvatar::CONFIG_ROOT_KEY . 'path' => 'profile_pictures']);
 
         $uploadedFile = UploadedFile::fake()->image('sammy.jpg', 120, 120);
-        $avatar = StorageAvatar::upload($uploadedFile);
+        $avatar       = StorageAvatar::upload($uploadedFile);
 
         $this->assertStringStartsWith('profile_pictures/', $avatar->getData());
         $this->assertStringStartsWith('/storage/profile_pictures/', $avatar->getUrl());
@@ -65,7 +65,7 @@ class StorageAvatarTest extends TestCase
         $profile = factory(Profile::class)->create();
 
         $uploadedFile = UploadedFile::fake()->image('test_avatar.jpg', 85, 85);
-        $avatar = StorageAvatar::upload($uploadedFile);
+        $avatar       = StorageAvatar::upload($uploadedFile);
 
         $profile->setAvatar($avatar);
         $profile->save();

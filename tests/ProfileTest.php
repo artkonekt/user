@@ -26,11 +26,11 @@ class ProfileTest extends TestCase
     /** @test */
     public function it_can_be_created()
     {
-        $user = factory(User::class)->create();
+        $user   = factory(User::class)->create();
         $person = factory(Person::class)->create();
 
         $profile = Profile::create([
-            'user_id' => $user->id,
+            'user_id'   => $user->id,
             'person_id' => $person->id
         ]);
 
@@ -72,7 +72,7 @@ class ProfileTest extends TestCase
     /** @test */
     public function removing_an_avatar_invokes_the_delete_function_of_the_avatar_type()
     {
-        $profile = factory(Profile::class)->create();
+        $profile      = factory(Profile::class)->create();
         $uploadedFile = UploadedFile::fake()->image('horse.jpg', 85, 85);
         $profile->setAvatar(StorageAvatar::upload($uploadedFile));
         $profile->save();

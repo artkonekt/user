@@ -6,6 +6,6 @@ use Konekt\Address\Models\Person;
 $factory->define(Person::class, function (Faker $faker) {
     return [
         'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName
+        'lastname'  => $faker->lastName
     ];
 });
