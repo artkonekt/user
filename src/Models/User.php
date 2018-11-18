@@ -29,18 +29,8 @@ class User extends Authenticatable implements UserContract
 {
     use Notifiable, SoftDeletes, CastsEnums;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'type', 'is_active'
     ];
@@ -51,11 +41,6 @@ class User extends Authenticatable implements UserContract
         'type' => 'UserTypeProxy@enumClass'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
