@@ -12,18 +12,66 @@
 namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Konekt\User\AvatarTypes;
+use Konekt\User\Contracts\Avatar;
+use Konekt\User\Contracts\HasAvatar;
 use Konekt\User\Contracts\Profile as ProfileContract;
 
-class Profile extends Model implements ProfileContract
+class Profile extends Model implements ProfileContract, HasAvatar
 {
     protected $table = 'profiles';
+
+    protected $guarded = ['id'];
 
     public function user()
     {
         return $this->belongsTo(UserProxy::modelClass(), 'user_id');
     }
 
-    protected static function boot()
+    public function setAvatar(Avatar $avatar)
     {
+        $this->avatar_type = AvatarTypes::getType(get_class($avatar));
+        $this->avatar_data = $avatar->getData();
+    }
+
+    public function getAvatar(): ?Avatar
+    {
+        if (!$this->hasAvatar()) {
+            return null;
+        }
+
+        $class = AvatarTypes::getClass($this->avatar_type);
+
+        if (!class_exists($class)) {
+            return null;
+        }
+
+        return new $class($this->avatar_data);
+    }
+
+    public function removeAvatar()
+    {
+        if ($avatar = $this->getAvatar()) {
+            $avatar->delete();
+        }
+
+        $this->avatar_type = null;
+        $this->avatar_data = null;
+    }
+
+    public function hasAvatar(): bool
+    {
+        return (bool) $this->avatar_type;
+    }
+
+    public function avatarUrl(string $variant = null): ?string
+    {
+        if (!$this->hasAvatar()) {
+            return null;
+        }
+
+        $avatar = $this->getAvatar();
+
+        return $avatar ? $avatar->getUrl($variant) : null;
     }
 }

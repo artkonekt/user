@@ -11,18 +11,25 @@
 
 namespace Konekt\User\Tests;
 
+use Faker\Generator;
 use Illuminate\Database\Schema\Blueprint;
+use Konekt\Address\Providers\ModuleServiceProvider as AddressModule;
 use Konekt\User\Providers\ModuleServiceProvider as UserModule;
 use Konekt\Concord\ConcordServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
+    /** @var Generator */
+    protected $faker;
+
     public function setUp()
     {
         parent::setUp();
 
+        $this->withFactories(__DIR__ . '/factories');
         $this->setUpDatabase($this->app);
+        $this->faker = \Faker\Factory::create();
     }
 
     /**
@@ -78,6 +85,7 @@ abstract class TestCase extends Orchestra
     {
         parent::resolveApplicationConfiguration($app);
         $app['config']->set('concord.modules', [
+            AddressModule::class,
             UserModule::class
         ]);
     }

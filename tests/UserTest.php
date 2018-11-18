@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the FieldsTest class.
+ * Contains the UserTest class.
  *
  * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
@@ -11,16 +11,17 @@
 
 namespace Konekt\User\Tests;
 
+use Konekt\Enum\Enum;
 use Konekt\User\Contracts\UserType as UserTypeContract;
 use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
 
-class FieldsTest extends TestCase
+class UserTest extends TestCase
 {
     /**
      * @test
      */
-    public function type_field_should_be_an_enum()
+    public function type_field_is_an_enum()
     {
         $admin = User::create([
             'name'     => 'The Big Chick',
@@ -30,5 +31,6 @@ class FieldsTest extends TestCase
         ]);
 
         $this->assertInstanceOf(UserTypeContract::class, $admin->type);
+        $this->assertInstanceOf(Enum::class, $admin->type);
     }
 }

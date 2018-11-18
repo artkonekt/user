@@ -16,7 +16,7 @@
         "issues": "https://github.com/artkonekt/user"
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.1.3",
         "konekt/concord": "~1.0",
         "konekt/address": ">=0.9.7"
     },
