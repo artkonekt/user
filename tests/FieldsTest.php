@@ -23,8 +23,8 @@ class FieldsTest extends TestCase
     public function type_field_should_be_an_enum()
     {
         $admin = User::create([
-            'name'     => 'The Big Dick',
-            'email'    => 'really@big.dick',
+            'name'     => 'The Big Chick',
+            'email'    => 'really@big.com',
             'password' => bcrypt('123456_is_the_best_password'),
             'type'     => UserType::ADMIN
         ]);
