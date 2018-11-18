@@ -11,23 +11,9 @@
 
 namespace Konekt\User\Events;
 
-use Konekt\User\Contracts\User;
 use Konekt\User\Contracts\UserEvent;
 
 class UserWasInactivated implements UserEvent
 {
-    /** @var  User */
-    public $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-    /**
-     * @inheritDoc
-     */
-    public function getUser(): User
-    {
-        return $this->user;
-    }
+    use HasUser;
 }
