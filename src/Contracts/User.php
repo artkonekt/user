@@ -16,4 +16,6 @@ interface User
     public function inactivate();
 
     public function activate();
+
+    public function getProfile(): ?Profile;
 }

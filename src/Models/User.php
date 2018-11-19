@@ -15,7 +15,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Konekt\Enum\Eloquent\CastsEnums;
+use Konekt\User\Contracts\Profile;
 use Konekt\User\Contracts\User as UserContract;
+use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Events\UserWasActivated;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
@@ -49,6 +51,11 @@ class User extends Authenticatable implements UserContract
         'created' => UserWasCreated::class,
         'deleted' => UserWasDeleted::class
     ];
+
+    public function getProfile(): ?ProfileContract
+    {
+        return $this->profile;
+    }
 
     public function profile()
     {

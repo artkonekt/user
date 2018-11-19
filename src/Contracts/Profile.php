@@ -11,6 +11,7 @@
 
 namespace Konekt\User\Contracts;
 
-interface Profile
+interface Profile extends HasAvatar
 {
+    public function getUser(): User;
 }

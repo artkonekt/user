@@ -14,14 +14,19 @@ namespace Konekt\User\Models;
 use Illuminate\Database\Eloquent\Model;
 use Konekt\User\AvatarTypes;
 use Konekt\User\Contracts\Avatar;
-use Konekt\User\Contracts\HasAvatar;
 use Konekt\User\Contracts\Profile as ProfileContract;
+use Konekt\User\Contracts\User;
 
-class Profile extends Model implements ProfileContract, HasAvatar
+class Profile extends Model implements ProfileContract
 {
     protected $table = 'profiles';
 
     protected $guarded = ['id'];
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
 
     public function user()
     {
