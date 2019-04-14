@@ -23,6 +23,13 @@ use Konekt\User\Tests\Dummies\DummyAvatar;
 
 class ProfileTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        AvatarTypes::register('dummy', DummyAvatar::class);
+    }
+
     /** @test */
     public function it_can_be_created()
     {
@@ -86,12 +93,5 @@ class ProfileTest extends TestCase
         $profile->save();
 
         $this->assertFalse(Storage::exists($filename));
-    }
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        AvatarTypes::register('dummy', DummyAvatar::class);
     }
 }
