@@ -12,4 +12,4 @@
 
 - III. Customization
     - [Customization](customize.md)
-    - [Using Custom Models](models.md)
+    - [Custom Models](models.md)

@@ -9,7 +9,7 @@ The `type` field is a `UserType` [enum](https://konekt.dev/enum) that can be eit
 The type field was intended to be used for rough categorization of users and not for fine tuned
 ACL type roles or permissions.
 
-Examples what the type can be used for:
+Examples what type can be used for:
 
 - Generic access/denial to areas of a system eg. Backoffice, REST API.
 - Segregating users on the UI or in Reports

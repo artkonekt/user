@@ -21,4 +21,4 @@ This will emit a `UserWasActivated` event.
 
 ---
 
-**Next**: [Login Statistics &raquo;]()
+**Next**: [Login Statistics &raquo;](login-stats.md)
