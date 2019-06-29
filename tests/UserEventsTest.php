@@ -28,7 +28,7 @@ class UserEventsTest extends TestCase
         $this->expectsEvents(UserWasCreated::class);
 
         UserProxy::create([
-            'email'    => 'whatever@vanilo.io',
+            'email'    => 'miny@vanilo.io',
             'name'     => 'Miny Moe',
             'password' => bcrypt('easy')
         ]);
@@ -63,7 +63,7 @@ class UserEventsTest extends TestCase
         ]);
 
         $user = UserProxy::create([
-            'email'    => 'whatever@vanilo.io',
+            'email'    => 'miny.moe@vanilo.io',
             'name'     => 'Miny Moe',
             'password' => bcrypt('easy')
         ])->fresh();

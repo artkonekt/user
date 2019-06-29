@@ -34,7 +34,8 @@ class ExtendUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['last_login_at', 'is_active', 'type']);
+            $table->dropColumn(['last_login_at', 'is_active', 'type', 'login_count']);
+            $table->dropSoftDeletes();
         });
     }
 }

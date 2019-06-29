@@ -12,7 +12,6 @@
 namespace Konekt\User\Tests;
 
 use Faker\Generator;
-use Illuminate\Database\Schema\Blueprint;
 use Konekt\Address\Providers\ModuleServiceProvider as AddressModule;
 use Konekt\User\Providers\ModuleServiceProvider as UserModule;
 use Konekt\Concord\ConcordServiceProvider;
@@ -51,11 +50,20 @@ abstract class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
+
+//        $app['config']->set('database.default', 'sqlite');
+//        $app['config']->set('database.connections.sqlite', [
+//            'driver'   => 'sqlite',
+//            'database' => ':memory:',
+//            'prefix'   => '',
+//        ]);
+        $app['config']->set('database.default', 'mysql');
+        $app['config']->set('database.connections.mysql', [
+            'driver'   => 'mysql',
+            'database' => 'user_test',
+            'host' => 'localhost',
+            'username'   => env('TEST_DB_USERNAME', 'root'),
+            'password'   => env('TEST_DB_PASSWORD', ''),
         ]);
     }
 
@@ -66,15 +74,8 @@ abstract class TestCase extends Orchestra
      */
     protected function setUpDatabase($app)
     {
-        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
+        \Artisan::call('migrate:reset');
+        $this->loadLaravelMigrations();
         \Artisan::call('migrate', ['--force' => true]);
     }
 

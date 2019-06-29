@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\App;
 
 class CreateProfilesTable extends Migration
 {
@@ -13,8 +14,16 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
+
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+
+            $useBigInt = env('USER_ID_IS_BIGINT', version_compare(App::version(), '5.8.0', '>='));
+            if ($useBigInt) {
+                $table->bigInteger('user_id')->unsigned();
+            } else {
+                $table->integer('user_id')->unsigned();
+            }
+
             $table->integer('person_id')->unsigned();
             $table->string('avatar_type')->nullable();
             $table->text('avatar_data')->nullable();

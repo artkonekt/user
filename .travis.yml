@@ -2,6 +2,9 @@ language: php
 cache:
   directories:
   - "$HOME/.composer/cache"
+env:
+  - TEST_DB_USERNAME=travis
+  - TEST_DB_PASSWORD=""
 matrix:
   include:
   - php: 7.1
@@ -40,7 +43,10 @@ before_install:
 - composer require "illuminate/support:5.${L5_VER}.*" --no-update -v
 - composer require "illuminate/console:5.${L5_VER}.*" --no-update -v
 - composer require "orchestra/testbench:3.${L5_VER}.*" --no-update -v
+- mysql -e 'CREATE DATABASE user_test;'
 install: composer install --no-interaction
+services:
+  - mysql
 notifications:
   email: false
   slack:
