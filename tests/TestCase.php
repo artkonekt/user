@@ -50,20 +50,16 @@ abstract class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
+        $engine = env('TEST_DB_ENGINE', 'sqlite');
 
-//        $app['config']->set('database.default', 'sqlite');
-//        $app['config']->set('database.connections.sqlite', [
-//            'driver'   => 'sqlite',
-//            'database' => ':memory:',
-//            'prefix'   => '',
-//        ]);
-        $app['config']->set('database.default', 'mysql');
-        $app['config']->set('database.connections.mysql', [
-            'driver'   => 'mysql',
-            'database' => 'user_test',
-            'host' => 'localhost',
-            'username'   => env('TEST_DB_USERNAME', 'root'),
-            'password'   => env('TEST_DB_PASSWORD', ''),
+        $app['config']->set('database.default', $engine);
+        $app['config']->set('database.connections.' . $engine, [
+            'driver'   => $engine,
+            'database' => 'sqlite' == $engine ? ':memory:' : 'user_test',
+            'prefix'   => '',
+            'host'     => 'localhost',
+            'username' => env('TEST_DB_USERNAME', 'root'),
+            'password' => env('TEST_DB_PASSWORD', ''),
         ]);
     }
 

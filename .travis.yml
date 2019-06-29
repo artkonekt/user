@@ -2,41 +2,38 @@ language: php
 cache:
   directories:
   - "$HOME/.composer/cache"
-env:
-  - TEST_DB_USERNAME=travis
-  - TEST_DB_PASSWORD=""
 matrix:
   include:
   - php: 7.1
-    env: L5_VER=4
+    env: L5_VER=4 TEST_DB_ENGINE=mysql
   - php: 7.1
-    env: L5_VER=5
+    env: L5_VER=5 TEST_DB_ENGINE=mysql
   - php: 7.1
-    env: L5_VER=6
+    env: L5_VER=6 TEST_DB_ENGINE=mysql
   - php: 7.1
-    env: L5_VER=7
+    env: L5_VER=7 TEST_DB_ENGINE=mysql
   - php: 7.1
-    env: L5_VER=8
+    env: L5_VER=8 TEST_DB_ENGINE=mysql
   - php: 7.2
-    env: L5_VER=4
+    env: L5_VER=4 TEST_DB_ENGINE=mysql
   - php: 7.2
-    env: L5_VER=5
+    env: L5_VER=5 TEST_DB_ENGINE=mysql
   - php: 7.2
-    env: L5_VER=6
+    env: L5_VER=6 TEST_DB_ENGINE=mysql
   - php: 7.2
-    env: L5_VER=7
+    env: L5_VER=7 TEST_DB_ENGINE=mysql
   - php: 7.2
-    env: L5_VER=8
+    env: L5_VER=8 TEST_DB_ENGINE=mysql
   - php: 7.3
-    env: L5_VER=4
+    env: L5_VER=4 TEST_DB_ENGINE=mysql
   - php: 7.3
-    env: L5_VER=5
+    env: L5_VER=5 TEST_DB_ENGINE=mysql
   - php: 7.3
-    env: L5_VER=6
+    env: L5_VER=6 TEST_DB_ENGINE=mysql
   - php: 7.3
-    env: L5_VER=7
+    env: L5_VER=7 TEST_DB_ENGINE=mysql
   - php: 7.3
-    env: L5_VER=8
+    env: L5_VER=8 TEST_DB_ENGINE=mysql
 script:
 - vendor/bin/phpunit -c phpunit.xml
 before_install:
