@@ -20,4 +20,5 @@ class UserType extends Enum implements UserTypeContract
 
     const ADMIN     = 'admin';
     const CLIENT    = 'client';
+    const API       = 'api';
 }

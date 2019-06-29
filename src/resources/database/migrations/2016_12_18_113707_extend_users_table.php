@@ -18,7 +18,7 @@ class ExtendUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('type', array_values(UserType::toArray()))->default(UserType::__default);
+            $table->enum('type', ['client', 'admin'])->default('client');
             $table->boolean('is_active')->default(true);
             $table->dateTime('last_login_at')->nullable();
             $table->integer('login_count')->unsigned()->nullable()->default(0);
