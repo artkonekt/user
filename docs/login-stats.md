@@ -1,4 +1,4 @@
-## Login Statistics
+# Login Statistics
 
 Users have two login related fields:
 
