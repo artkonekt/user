@@ -14,7 +14,7 @@ namespace Konekt\User\Tests;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
-use Konekt\User\Models\UserProxy;
+use Konekt\User\Models\User;
 
 class UserEventsTest extends TestCase
 {
@@ -27,11 +27,7 @@ class UserEventsTest extends TestCase
     {
         $this->expectsEvents(UserWasCreated::class);
 
-        UserProxy::create([
-            'email'    => 'miny@vanilo.io',
-            'name'     => 'Miny Moe',
-            'password' => bcrypt('easy')
-        ]);
+        factory(User::class)->create();
     }
 
     /**
@@ -41,11 +37,7 @@ class UserEventsTest extends TestCase
     {
         $this->expectsEvents(UserWasInactivated::class);
 
-        $user = UserProxy::create([
-            'email'    => 'whatever@vanilo.io',
-            'name'     => 'Miny Moe',
-            'password' => bcrypt('easy')
-        ]);
+        $user = factory(User::class)->create();
 
         $user->inactivate();
     }
@@ -62,11 +54,7 @@ class UserEventsTest extends TestCase
             UserWasDeleted::class
         ]);
 
-        $user = UserProxy::create([
-            'email'    => 'miny.moe@vanilo.io',
-            'name'     => 'Miny Moe',
-            'password' => bcrypt('easy')
-        ])->fresh();
+        $user = factory(User::class)->create();
 
         $user->delete();
     }

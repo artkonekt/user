@@ -57,10 +57,14 @@ abstract class TestCase extends Orchestra
             'driver'   => $engine,
             'database' => 'sqlite' == $engine ? ':memory:' : 'user_test',
             'prefix'   => '',
-            'host'     => 'localhost',
+            'host'     => '127.0.0.1',
             'username' => env('TEST_DB_USERNAME', 'root'),
             'password' => env('TEST_DB_PASSWORD', ''),
         ]);
+
+        if ('pgsql' === $engine) {
+            $app['config']->set("database.connections.{$engine}.charset", 'utf8');
+        }
     }
 
     /**
@@ -70,9 +74,9 @@ abstract class TestCase extends Orchestra
      */
     protected function setUpDatabase($app)
     {
-        \Artisan::call('migrate:reset');
+        $this->artisan('migrate:reset');
         $this->loadLaravelMigrations();
-        \Artisan::call('migrate', ['--force' => true]);
+        $this->artisan('migrate', ['--force' => true]);
     }
 
     /**
