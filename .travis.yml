@@ -65,7 +65,7 @@ matrix:
   - php: 7.3
     env: L5_VER=8 TEST_DB_ENGINE=pgsql TEST_DB_USERNAME=postgres
 script:
-- vendor/bin/phpunit -c phpunit.xml
+- vendor/bin/phpunit
 before_install:
 - composer require "illuminate/support:5.${L5_VER}.*" --no-update -v
 - composer require "illuminate/console:5.${L5_VER}.*" --no-update -v
