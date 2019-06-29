@@ -7,6 +7,8 @@ matrix:
   - php: 7.1
     env: L5_VER=4 TEST_DB_ENGINE=mysql
   - php: 7.1
+    env: L5_VER=4 TEST_DB_ENGINE=postgresql
+  - php: 7.1
     env: L5_VER=5 TEST_DB_ENGINE=mysql
   - php: 7.1
     env: L5_VER=6 TEST_DB_ENGINE=mysql
@@ -34,6 +36,8 @@ matrix:
     env: L5_VER=7 TEST_DB_ENGINE=mysql
   - php: 7.3
     env: L5_VER=8 TEST_DB_ENGINE=mysql
+  - php: 7.3
+    env: L5_VER=8 TEST_DB_ENGINE=postgresql
 script:
 - vendor/bin/phpunit -c phpunit.xml
 before_install:
@@ -41,9 +45,11 @@ before_install:
 - composer require "illuminate/console:5.${L5_VER}.*" --no-update -v
 - composer require "orchestra/testbench:3.${L5_VER}.*" --no-update -v
 - mysql -e 'CREATE DATABASE user_test;'
+- psql -c 'create database user_test;' -U postgres
 install: composer install --no-interaction
 services:
   - mysql
+  - postgresql
 notifications:
   email: false
   slack:
