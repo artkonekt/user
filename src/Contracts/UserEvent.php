@@ -18,5 +18,5 @@ interface UserEvent
      *
      * @return User
      */
-    public function getUser() : User;
+    public function getUser(): User;
 }

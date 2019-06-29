@@ -22,6 +22,7 @@ trait HasUser
     {
         $this->user = $user;
     }
+
     /**
      * @inheritDoc
      */

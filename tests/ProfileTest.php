@@ -23,7 +23,7 @@ use Konekt\User\Tests\Dummies\DummyAvatar;
 
 class ProfileTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 

@@ -20,11 +20,6 @@ final class Gravatar implements Avatar
     /** @var string */
     private $email;
 
-    public static function create(string $data = null): Avatar
-    {
-        return new self($data);
-    }
-
     public function __construct($email)
     {
         if (is_callable($email)) {
@@ -32,6 +27,11 @@ final class Gravatar implements Avatar
         } else {
             $this->email = (string) $email;
         }
+    }
+
+    public static function create(string $data = null): Avatar
+    {
+        return new self($data);
     }
 
     public function getData(): string
@@ -48,7 +48,7 @@ final class Gravatar implements Avatar
     {
         $hash    = md5($this->email);
         $default = $this->config('default_image');
-        $size    = is_null($variant) ? $this->config('default_size') : (int)$variant;
+        $size    = is_null($variant) ? $this->config('default_size') : (int) $variant;
 
         return sprintf("https://www.gravatar.com/avatar/%s.jpg?s=%d&d=%s",
             $hash, $size, $default

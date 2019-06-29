@@ -14,7 +14,6 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-
             $table->increments('id');
 
             $useBigInt = env('USER_ID_IS_BIGINT', version_compare(App::version(), '5.8.0', '>='));

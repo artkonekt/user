@@ -25,6 +25,12 @@ final class StorageAvatar implements Avatar
     /** @var string */
     private $path;
 
+    public function __construct(string $file)
+    {
+        $this->file = $file;
+        $this->path = self::config('path');
+    }
+
     public static function upload(UploadedFile $uploadedFile): ?Avatar
     {
         $result = $uploadedFile->storePublicly(self::config('path'));
@@ -39,12 +45,6 @@ final class StorageAvatar implements Avatar
     public static function create(string $data = null): Avatar
     {
         return new self($data);
-    }
-
-    public function __construct(string $file)
-    {
-        $this->file = $file;
-        $this->path = self::config('path');
     }
 
     public function getData(): string

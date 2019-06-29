@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Konekt\User\Models\UserType;
 
 /**
  * This migrations was intended to be run on top of Laravel's factory default CreateUsersTable migration

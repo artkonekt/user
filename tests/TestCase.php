@@ -22,7 +22,7 @@ abstract class TestCase extends Orchestra
     /** @var Generator */
     protected $faker;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 

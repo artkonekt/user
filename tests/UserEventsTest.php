@@ -18,7 +18,6 @@ use Konekt\User\Models\User;
 
 class UserEventsTest extends TestCase
 {
-
     /**
      * Disabled since Eloquent lifecycle event detection is not working properly
      * @dont_test

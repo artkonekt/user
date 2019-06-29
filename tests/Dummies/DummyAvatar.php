@@ -19,14 +19,14 @@ class DummyAvatar implements Avatar
 
     private $isDeleted = false;
 
-    public static function create(string $data = null): Avatar
-    {
-        return new self($data);
-    }
-
     public function __construct(string $data = null)
     {
         $this->data = $data;
+    }
+
+    public static function create(string $data = null): Avatar
+    {
+        return new self($data);
     }
 
     public function getData(): string
