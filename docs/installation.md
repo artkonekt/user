@@ -17,18 +17,13 @@ return [
 ];
 ```
 
-### Register The Service Provider (Laravel 5.4 Only)
+!> **Laravel 5.4:** Register The Service Provider
+> Edit `config/app.php` and add this line to the `providers` array
+> (below 'Package Service Providers', always above 'Application Service Providers'):
+>
+> `Konekt\User\Providers\ModuleServiceProvider::class`
 
-Edit `config/app.php` and add this line to the `providers` array (below 'Package Service Providers',
-always above 'Application Service Providers')
-
-(_Recommended line: just below Tinker's service provider_)
-
-```php
-Konekt\User\Providers\ModuleServiceProvider::class,
-```
-
-Test if it works by invoking the command
+Test if all worked well by invoking the command:
 
 ```bash
 php artisan concord:modules
@@ -72,20 +67,25 @@ for packages that define references to the default Laravel user table.
 
 This package contains the `Profile` model having the `profile` table beneath.
 The profile belongs to a user via the `user_id` key. In order to keep the above mentioned
-compatibility (`user_id` field must be the same type (int or bigint) as the user table's `id` field.
+compatibility, the `user_id` field must be the same type (int or bigint) as the user table's `id`
+field.
 
 Unfortunately detecting if Laravel version is 5.8+ is not enough to find out whether `user.id` is
 bigInt or int, since the host application could use bigInt even before Laravel 5.8 and can still use
 plain int even after 5.8.
 
-Best solution would've been to include `doctrine/dbal` in the package and detect the actual field
-type and act accordingly. The problem with that solution is that it
+Best solution would be to detect the actual field type and act accordingly.
+The problem with that solution is that it
 [prevents from altering tables](https://laravel.com/docs/5.8/migrations#modifying-columns) with enum
-fields, breaking the migrations in this package.
+fields, breaking the migrations in this package, especially with MySQL:
+
+```
+Unknown database type enum requested, Doctrine\DBAL\Platforms\MySQL57Platform may not support it.
+```
 
 In case you created your project with Laravel 5.8, then the user table is likely already a bigInt.
 
-#### Quick Solution
+#### Solution
 
 You can explicitly define whether to use bigInt for referring to the `user.id` field by setting the
 value of `USER_ID_IS_BIGINT` to `true` or `false` in your `.env` file.
@@ -109,7 +109,7 @@ Migrating: 2016_12_18_121118_create_profiles_table
 
 ## Laravel Auth Support
 
-First, Run `php artisan make:auth`
+First, run `php artisan make:auth` in your application.
 
 **If** the "final" user class is not going to be `App\User` then don't forget to modify model class this
 to your app's `config/auth.php` file:
