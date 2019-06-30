@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Konekt\User\Models\UserProxy;
+use Konekt\User\Models\UserTypeProxy;
 
 class ConvertUserTypeToVarchar extends Migration
 {
@@ -47,10 +49,19 @@ class ConvertUserTypeToVarchar extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('type', ['client', 'admin'])->default('client');
+            $table->enum('type', ['client', 'admin', 'api'])->default('client');
         });
 
-        DB::update("update users set $typeFieldName = type_new");
+
+        /** @var \Konekt\User\Contracts\User $user */
+        foreach(UserProxy::all() as $user) {
+            // Must handle this, otherwise it might fail with:
+            // MySQL:    Data truncated for column 'type'
+            // Postgres: Check violation: 7 ERROR: new row for relation "users"
+            //           violates check constraint "users_type_check"
+            $user->type = UserTypeProxy::has($user->type_new) ? $user->type_new : UserTypeProxy::defaultValue();
+            $user->save();
+        }
 
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('type_new');
