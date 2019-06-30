@@ -1,6 +1,9 @@
 # User Types
 
-The `type` field is a `UserType` [enum](https://konekt.dev/enum) that can be either:
+The `type` field is a `UserType` [enum](https://konekt.dev/enum).
+
+The package ships with some defaults, but it's fully customizable.
+The out-of-box values are:
 
 - 'client' (default)
 - 'admin'
@@ -18,7 +21,9 @@ Examples what type can be used for:
 > Check out our [ACL](https://konekt.dev/acl) package for a proper granular permission system that
 > works in combination with this package.
 
-For modifying possible user types refer to [Customization](customize.md)
+## Customizing User Types
+
+For modifying possible user types values refer to [Customization](customize.md).
 
 ---
 
