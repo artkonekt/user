@@ -52,7 +52,6 @@ class ConvertUserTypeToVarchar extends Migration
             $table->enum('type', ['client', 'admin', 'api'])->default('client');
         });
 
-
         /** @var \Konekt\User\Contracts\User $user */
         foreach (UserProxy::all() as $user) {
             // Must handle this, otherwise it might fail with:
