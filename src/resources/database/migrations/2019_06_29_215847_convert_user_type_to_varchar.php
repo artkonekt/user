@@ -54,7 +54,7 @@ class ConvertUserTypeToVarchar extends Migration
 
 
         /** @var \Konekt\User\Contracts\User $user */
-        foreach(UserProxy::all() as $user) {
+        foreach (UserProxy::all() as $user) {
             // Must handle this, otherwise it might fail with:
             // MySQL:    Data truncated for column 'type'
             // Postgres: Check violation: 7 ERROR: new row for relation "users"
