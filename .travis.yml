@@ -70,8 +70,8 @@ before_install:
 - composer require "illuminate/support:5.${L5_VER}.*" --no-update -v
 - composer require "illuminate/console:5.${L5_VER}.*" --no-update -v
 - composer require "orchestra/testbench:3.${L5_VER}.*" --no-update -v
-- mysql -e 'CREATE DATABASE user_test;'
-- psql -c 'create database user_test;' -U postgres
+- sh -c "[ ! -z TEST_DB_ENGINE ] && [ 'mysql' = TEST_DB_ENGINE ] && mysql -e 'CREATE DATABASE user_test;" || true
+- sh -c "[ ! -z TEST_DB_ENGINE ] && [ 'postgres' = TEST_DB_ENGINE ] && psql -c 'create database user_test;' -U postgres" || true
 install: composer install --no-interaction
 services:
   - mysql
