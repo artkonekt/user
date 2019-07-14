@@ -2,6 +2,11 @@
 
 ## 1.1 Series
 
+### 1.1.1
+##### 2019-07-14
+
+- FIXED: broken migration for SQLite
+
 ### 1.1.0
 ##### 2019-06-30
 
