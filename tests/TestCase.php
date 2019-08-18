@@ -13,6 +13,7 @@ namespace Konekt\User\Tests;
 
 use Faker\Generator;
 use Konekt\Address\Providers\ModuleServiceProvider as AddressModule;
+use Konekt\LaravelMigrationCompatibility\LaravelMigrationCompatibilityProvider;
 use Konekt\User\Providers\ModuleServiceProvider as UserModule;
 use Konekt\Concord\ConcordServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -39,7 +40,8 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            ConcordServiceProvider::class
+            ConcordServiceProvider::class,
+            LaravelMigrationCompatibilityProvider::class
         ];
     }
 
@@ -58,7 +60,7 @@ abstract class TestCase extends Orchestra
             'database' => 'sqlite' == $engine ? ':memory:' : 'user_test',
             'prefix'   => '',
             'host'     => '127.0.0.1',
-            'username' => env('TEST_DB_USERNAME', 'root'),
+            'username' => env('TEST_DB_USERNAME', 'pgsql' === $engine ? 'postgres' : 'root'),
             'password' => env('TEST_DB_PASSWORD', ''),
         ]);
 

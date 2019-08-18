@@ -15,14 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-
-            $useBigInt = env('USER_ID_IS_BIGINT', version_compare(App::version(), '5.8.0', '>='));
-            if ($useBigInt) {
-                $table->bigInteger('user_id')->unsigned();
-            } else {
-                $table->integer('user_id')->unsigned();
-            }
-
+            $table->intOrBigIntBasedOnRelated('user_id', Schema::connection(null), 'users.id');
             $table->integer('person_id')->unsigned();
             $table->string('avatar_type')->nullable();
             $table->text('avatar_data')->nullable();
