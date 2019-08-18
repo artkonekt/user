@@ -20,7 +20,7 @@
         "ext-gd": "*",
         "konekt/concord": "~1.0",
         "konekt/address": ">=1.0.1",
-        "konekt/laravel-migration-compatibility": "^1.0@dev",
+        "konekt/laravel-migration-compatibility": "~1.0",
         "doctrine/dbal": "^2.9"
     },
     "autoload": {
