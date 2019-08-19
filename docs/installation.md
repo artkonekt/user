@@ -35,7 +35,7 @@ Now you should see this:
 +----+--------------------+--------+---------+-------------+-----------------+
 | #  | Name               | Kind   | Version | Id          | Namespace       |
 +----+--------------------+--------+---------+-------------+-----------------+
-| 1. | Konekt User Module | Module | 1.1.0  | konekt.user | Konekt\User     |
+| 1. | Konekt User Module | Module | 1.2.0  | konekt.user | Konekt\User     |
 +----+--------------------+--------+---------+-------------+-----------------+
 ```
 
@@ -55,57 +55,34 @@ The user module contains 2 migrations out of the box
 
 ### Laravel 5.8 and Bigint Compatibility
 
-#### Background
-
 !> As of [Laravel 5.8](https://github.com/laravel/framework/pull/26472), migration stubs use the `bigIncrements` method on ID columns by default. Previously, ID columns were created using the increments method.
 
 Foreign key columns must be of the same type. Therefore, a column created using the increments
 method can not reference a column created using the bigIncrements method.
-
-This small change is a big [source of problems](https://laraveldaily.com/be-careful-laravel-5-8-added-bigincrements-as-defaults/)
-for packages that define references to the default Laravel user table.
 
 This package contains the `Profile` model having the `profile` table beneath.
 The profile belongs to a user via the `user_id` key. In order to keep the above mentioned
 compatibility, the `user_id` field must be the same type (int or bigint) as the user table's `id`
 field.
 
-Unfortunately detecting if Laravel version is 5.8+ is not enough to find out whether `user.id` is
-bigInt or int, since the host application could use bigInt even before Laravel 5.8 and can still use
-plain int even after 5.8.
+!> The `USER_ID_IS_BIGINT` env support introduced in [version 1.1](https://konekt.dev/user/1.1/installation#laravel-58-and-bigint-compatibility) has been removed as of v1.2 due to [issues](https://github.com/artkonekt/user/issues/1) with it.
 
-Best solution would be to detect the actual field type and act accordingly.
-The problem with that solution is that it
-[prevents from altering tables](https://laravel.com/docs/5.8/migrations#modifying-columns) with enum
-fields, breaking the migrations in this package, especially with MySQL:
+To solve this problem, the profiles table migration uses the
+[Laravel Migration Compatibility](https://github.com/artkonekt/laravel-migration-compatibility)
+package. It attempts to automatically detect the actual type from the database.
 
+In case autodetection fails on your system, you can explicitly tell the exact type via configuration:
+
+```php
+// for bigint
+config(['migration.compatibility.map.comments.id' => 'bigint unsigned']);
+
+// for "old" int:
+config(['migration.compatibility.map.comments.id' => 'int unsigned']);
 ```
-Unknown database type enum requested, Doctrine\DBAL\Platforms\MySQL57Platform may not support it.
-```
 
-In case you created your project with Laravel 5.8, then the user table is likely already a bigInt.
-
-#### Solution
-
-You can explicitly define whether to use bigInt for referring to the `user.id` field by setting the
-value of `USER_ID_IS_BIGINT` to `true` or `false` in your `.env` file.
-
-If there's no explicit value defined for `USER_ID_IS_BIGINT` then it'll be true in Laravel 5.8+ and
-false for any earlier version.
-
-This can solve migration problems like:
-
-```
-Migrating: 2016_12_18_121118_create_profiles_table
-
-   Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1005 Can't create table
-   `vanilo`.`#sql-9a5_a6` (errno: 150 "Foreign key constraint is incorrectly formed")
-   (SQL:
-    alter table `profiles`
-    add constraint `profiles_user_id_foreign`
-    foreign key (`user_id`) references `users` (`id`)
-   )
-```
+For more options refer to the
+[Configuration](https://konekt.dev/migration-compatibility/1.0/configuration) section.
 
 ## Laravel Auth Support
 
