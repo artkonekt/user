@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2 Series
+
+### 1.2.0
+##### 2019-08-19
+
+- Using the [Laravel Migration Compatibility v1.0](https://konekt.dev/migration-compatibility/1.0/README) package to properly solve the Laravel 5.8 + bigInt problem.
+- Support for `USER_ID_IS_BIGINT` env variable in migrations has been dropped
+
 ## 1.1 Series
 
 ### 1.1.1
