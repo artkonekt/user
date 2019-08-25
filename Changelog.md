@@ -2,6 +2,11 @@
 
 ## 1.2 Series
 
+### 1.2.1
+##### 2019-08-25
+
+- Using at least v1.0.1 of the Laravel Migration Compatibility library that fixes an [important bug](https://github.com/artkonekt/user/issues/2).
+
 ### 1.2.0
 ##### 2019-08-19
 
