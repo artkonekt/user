@@ -1,6 +1,13 @@
 # Changelog
 
-## 1.2 Series
+## 1.x Series
+
+### Unreleased
+##### 2019-11-XX
+
+- Added Laravel 6 support
+- Removed Laravel 5.4 support
+- Minimum required Concord version is 1.4+
 
 ### 1.2.1
 ##### 2019-08-25
@@ -12,8 +19,6 @@
 
 - Using the [Laravel Migration Compatibility v1.0](https://konekt.dev/migration-compatibility/1.0/README) package to properly solve the Laravel 5.8 + bigInt problem.
 - Support for `USER_ID_IS_BIGINT` env variable in migrations has been dropped
-
-## 1.1 Series
 
 ### 1.1.1
 ##### 2019-07-14
@@ -29,8 +34,6 @@
 - Documentation has been added - https://konekt.dev/user/1.1
 - FIXED: broken migrations
 - CI runs tests with mysql and postgres as well
-
-## 1.0 Series
 
 ### 1.0.0
 ##### 2019-01-20
