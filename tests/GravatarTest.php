@@ -26,7 +26,7 @@ class GravatarTest extends TestCase
         $this->assertInstanceOf(Gravatar::class, $avatar);
         $this->assertEquals('user@example.com', $avatar->getData());
         $this->assertStringStartsWith('https://www.gravatar.com/', $avatar->getUrl());
-        $this->assertContains(md5('user@example.com'), $avatar->getUrl());
+        $this->assertStringContainsString(md5('user@example.com'), $avatar->getUrl());
     }
 
     /** @test */
@@ -43,6 +43,6 @@ class GravatarTest extends TestCase
         $this->assertEquals('user@example.com', $profile->avatar_data);
         $this->assertEquals('gravatar', $profile->avatar_type);
         $this->assertStringStartsWith('https://www.gravatar.com/', $profile->avatarUrl());
-        $this->assertContains(md5('user@example.com'), $profile->avatarUrl());
+        $this->assertStringContainsString(md5('user@example.com'), $profile->avatarUrl());
     }
 }

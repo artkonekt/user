@@ -2,95 +2,37 @@ language: php
 cache:
   directories:
   - "$HOME/.composer/cache"
-matrix:
-  include:
-#--- PHP 7.1 ---#
-    - php: 7.1
-      env: LARAVEL=5.5 TEST_DB_ENGINE=sqlite
-    - php: 7.1
-      env: LARAVEL=5.5 TEST_DB_ENGINE=mysql
-    - php: 7.1
-      env: LARAVEL=5.5 TEST_DB_ENGINE=pgsql
-    - php: 7.1
-      env: LARAVEL=5.6 TEST_DB_ENGINE=sqlite
-    - php: 7.1
-      env: LARAVEL=5.6 TEST_DB_ENGINE=mysql
-    - php: 7.1
-      env: LARAVEL=5.6 TEST_DB_ENGINE=pgsql
-    - php: 7.1
-      env: LARAVEL=5.7 TEST_DB_ENGINE=sqlite
-    - php: 7.1
-      env: LARAVEL=5.7 TEST_DB_ENGINE=mysql
-    - php: 7.1
-      env: LARAVEL=5.7 TEST_DB_ENGINE=pgsql
-    - php: 7.1
-      env: LARAVEL=5.8 TEST_DB_ENGINE=sqlite
-    - php: 7.1
-      env: LARAVEL=5.8 TEST_DB_ENGINE=mysql
-    - php: 7.1
-      env: LARAVEL=5.8 TEST_DB_ENGINE=pgsql
-#--- PHP 7.2 ---#
-    - php: 7.2
-      env: LARAVEL=5.5 TEST_DB_ENGINE=sqlite
-    - php: 7.2
-      env: LARAVEL=5.5 TEST_DB_ENGINE=mysql
-    - php: 7.2
-      env: LARAVEL=5.5 TEST_DB_ENGINE=pgsql
-    - php: 7.2
-      env: LARAVEL=5.6 TEST_DB_ENGINE=sqlite
-    - php: 7.2
-      env: LARAVEL=5.6 TEST_DB_ENGINE=mysql
-    - php: 7.2
-      env: LARAVEL=5.6 TEST_DB_ENGINE=pgsql
-    - php: 7.2
-      env: LARAVEL=5.7 TEST_DB_ENGINE=sqlite
-    - php: 7.2
-      env: LARAVEL=5.7 TEST_DB_ENGINE=mysql
-    - php: 7.2
-      env: LARAVEL=5.7 TEST_DB_ENGINE=pgsql
-    - php: 7.2
-      env: LARAVEL=5.8 TEST_DB_ENGINE=sqlite
-    - php: 7.2
-      env: LARAVEL=5.8 TEST_DB_ENGINE=mysql
-    - php: 7.2
-      env: LARAVEL=5.8 TEST_DB_ENGINE=pgsql
-    - php: 7.2
-      env: LARAVEL=6.0 TEST_DB_ENGINE=sqlite
-    - php: 7.2
-      env: LARAVEL=6.0 TEST_DB_ENGINE=mysql
-    - php: 7.2
-      env: LARAVEL=6.0 TEST_DB_ENGINE=pgsql
-#--- PHP 7.3 ---#
-    - php: 7.3
-      env: LARAVEL=5.5 TEST_DB_ENGINE=sqlite
-    - php: 7.3
-      env: LARAVEL=5.5 TEST_DB_ENGINE=pgsql
-    - php: 7.3
-      env: LARAVEL=5.5 TEST_DB_ENGINE=mysql
-    - php: 7.3
-      env: LARAVEL=5.6 TEST_DB_ENGINE=sqlite
-    - php: 7.3
-      env: LARAVEL=5.6 TEST_DB_ENGINE=pgsql
-    - php: 7.3
-      env: LARAVEL=5.6 TEST_DB_ENGINE=mysql
-    - php: 7.3
-      env: LARAVEL=5.7 TEST_DB_ENGINE=sqlite
-    - php: 7.3
-      env: LARAVEL=5.7 TEST_DB_ENGINE=pgsql
-    - php: 7.3
-      env: LARAVEL=5.7 TEST_DB_ENGINE=mysql
-    - php: 7.3
-      env: LARAVEL=5.8 TEST_DB_ENGINE=sqlite
-    - php: 7.3
-      env: LARAVEL=5.8 TEST_DB_ENGINE=pgsql
-    - php: 7.3
-      env: LARAVEL=5.8 TEST_DB_ENGINE=mysql
-    - php: 7.3
-      env: LARAVEL=6.5 TEST_DB_ENGINE=sqlite
-    - php: 7.3
-      env: LARAVEL=6.5 TEST_DB_ENGINE=pgsql
-    - php: 7.3
-      env: LARAVEL=6.5 TEST_DB_ENGINE=mysql
+php:
+  - '7.2'
+  - '7.3'
+  - '7.4'
+
+env:
+  - LARAVEL=5.5 TEST_DB_ENGINE=sqlite
+  - LARAVEL=5.5 TEST_DB_ENGINE=mysql
+  - LARAVEL=5.5 TEST_DB_ENGINE=pgsql
+  - LARAVEL=5.6 TEST_DB_ENGINE=sqlite
+  - LARAVEL=5.6 TEST_DB_ENGINE=mysql
+  - LARAVEL=5.6 TEST_DB_ENGINE=pgsql
+  - LARAVEL=5.7 TEST_DB_ENGINE=sqlite
+  - LARAVEL=5.7 TEST_DB_ENGINE=pgsql
+  - LARAVEL=5.7 TEST_DB_ENGINE=mysql
+  - LARAVEL=5.8 TEST_DB_ENGINE=sqlite
+  - LARAVEL=5.8 TEST_DB_ENGINE=mysql
+  - LARAVEL=5.8 TEST_DB_ENGINE=pgsql
+  - LARAVEL=6.0 TEST_DB_ENGINE=sqlite
+  - LARAVEL=6.0 TEST_DB_ENGINE=mysql
+  - LARAVEL=6.0 TEST_DB_ENGINE=pgsql
+  - LARAVEL=6.18 TEST_DB_ENGINE=sqlite
+  - LARAVEL=6.18 TEST_DB_ENGINE=mysql
+  - LARAVEL=6.18 TEST_DB_ENGINE=pgsql
+  - LARAVEL=7.0 TEST_DB_ENGINE=sqlite
+  - LARAVEL=7.0 TEST_DB_ENGINE=mysql
+  - LARAVEL=7.0 TEST_DB_ENGINE=pgsql
+  - LARAVEL=7.1 TEST_DB_ENGINE=sqlite
+  - LARAVEL=7.1 TEST_DB_ENGINE=mysql
+  - LARAVEL=7.1 TEST_DB_ENGINE=pgsql
+
 script:
 - vendor/bin/phpunit --testdox
 before_install:

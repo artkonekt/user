@@ -2,6 +2,13 @@
 
 ## 1.x Series
 
+### Unreleased
+##### 2020-03-XX
+
+- Added Laravel 7 support
+- Dropped PHP 7.1 support
+- Minimum required Concord version is 1.5+
+
 ### 1.3.0
 ##### 2019-11-23
 
