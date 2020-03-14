@@ -2,8 +2,8 @@
 
 ## 1.x Series
 
-### Unreleased
-##### 2020-03-XX
+### 1.4.0
+##### 2020-03-14
 
 - Added Laravel 7 support
 - Dropped PHP 7.1 support
