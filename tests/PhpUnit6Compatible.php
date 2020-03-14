@@ -9,7 +9,7 @@
  *
  */
 
-namespace Konekt\Menu\Tests;
+namespace Konekt\User\Tests;
 
 trait PhpUnit6Compatible
 {

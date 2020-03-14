@@ -11,7 +11,7 @@
 
 namespace Konekt\User\Tests;
 
-use Konekt\Menu\Tests\PhpUnit6Compatible;
+use Konekt\User\Tests\PhpUnit6Compatible;
 use Konekt\User\Avatar\Gravatar;
 use Konekt\User\Contracts\Avatar;
 use Konekt\User\Models\Profile;
