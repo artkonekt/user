@@ -50,8 +50,11 @@ final class Gravatar implements Avatar
         $default = $this->config('default_image');
         $size    = is_null($variant) ? $this->config('default_size') : (int) $variant;
 
-        return sprintf("https://www.gravatar.com/avatar/%s.jpg?s=%d&d=%s",
-            $hash, $size, $default
+        return sprintf(
+            "https://www.gravatar.com/avatar/%s.jpg?s=%d&d=%s",
+            $hash,
+            $size,
+            $default
         );
     }
 
