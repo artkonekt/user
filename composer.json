@@ -21,7 +21,7 @@
         "konekt/concord": "~1.5",
         "konekt/address": "~1.2",
         "konekt/laravel-migration-compatibility": "~1.2",
-        "doctrine/dbal": "^2.9"
+        "doctrine/dbal": "^2.9, !=2.10.3"
     },
     "autoload": {
         "psr-4": { "Konekt\\User\\": "src"}
