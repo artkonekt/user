@@ -17,12 +17,6 @@ return [
 ];
 ```
 
-!> **Laravel 5.4:** Register The Service Provider
-> Edit `config/app.php` and add this line to the `providers` array
-> (below 'Package Service Providers', always above 'Application Service Providers'):
->
-> `Konekt\User\Providers\ModuleServiceProvider::class`
-
 Test if all worked well by invoking the command:
 
 ```bash
@@ -35,7 +29,7 @@ Now you should see this:
 +----+--------------------+--------+---------+-------------+-----------------+
 | #  | Name               | Kind   | Version | Id          | Namespace       |
 +----+--------------------+--------+---------+-------------+-----------------+
-| 1. | Konekt User Module | Module | 1.2.0  | konekt.user | Konekt\User     |
+| 1. | Konekt User Module | Module | 1.5.0  | konekt.user | Konekt\User     |
 +----+--------------------+--------+---------+-------------+-----------------+
 ```
 

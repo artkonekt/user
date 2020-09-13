@@ -37,3 +37,14 @@ If the "final" user class is not going to be `App\User` then don't forget to mod
 | 5.8     | 1.0 - 1.4 |
 | 6.x     | 1.3+      |
 | 7.x     | 1.4+      |
+| 7.x     | 1.5+      |
+
+## PHP Compatibility
+
+| PHP | Address   |
+|:--------|:----------|
+| 7.0     | 0.9 |
+| 7.1     | 0.9 - 1.3 |
+| 7.2     | 0.9 - 1.4 |
+| 7.3     | 1.1 - 1.5 |
+| 7.4     | 1.4 - 1.5 |
