@@ -16,7 +16,7 @@ use Konekt\User\Contracts\UserType as UserTypeContract;
 
 class UserType extends Enum implements UserTypeContract
 {
-    const __default = self::CLIENT;
+    const __DEFAULT = self::CLIENT;
 
     const ADMIN     = 'admin';
     const CLIENT    = 'client';

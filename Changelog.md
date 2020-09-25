@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.x Series
+
+### Unreleased
+##### 2020-XX-YY
+
+- BC: Enums have been upgraded to v3
+- Dropped Laravel 5 support
+
 ## 1.x Series
 
 ### 1.5.0

@@ -14,7 +14,7 @@ namespace Konekt\User;
 use Konekt\User\Avatar\Gravatar;
 use Konekt\User\Avatar\StorageAvatar;
 
-class AvatarTypes
+final class AvatarTypes
 {
     private const BUILT_IN_TYPES = [
         'storage'  => StorageAvatar::class,
