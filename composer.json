@@ -18,9 +18,9 @@
     "require": {
         "php": "^7.3",
         "ext-gd": "*",
-        "konekt/concord": "~1.6",
+        "konekt/concord": "^1.5.1",
         "konekt/enum": "~3.0",
-        "konekt/address": "~2.0",
+        "konekt/address": "^2.0",
         "konekt/laravel-migration-compatibility": "~1.2",
         "doctrine/dbal": "^2.9, !=2.10.3"
     },

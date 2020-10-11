@@ -1,6 +1,7 @@
 - I. Introduction
     - [Overview](README.md)
     - [Installation](installation.md)
+    - [Upgrade](upgrade.md)
 
 - II. Features
     - [Active/Inactive Status](active-inactive.md)
