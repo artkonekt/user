@@ -29,7 +29,7 @@ class StorageAvatarTest extends TestCase
         $this->assertInstanceOf(StorageAvatar::class, $avatar);
         $this->assertStringStartsWith('avatars/', $avatar->getData());
         $this->assertStringStartsWith('/storage/avatars/', $avatar->getUrl());
-        $this->assertStringEndsWith('.jpeg', $avatar->getUrl());
+        $this->assertStringEndsWith('.jpg', $avatar->getUrl());
     }
 
     /** @test */
@@ -70,6 +70,6 @@ class StorageAvatarTest extends TestCase
         $profile->save();
 
         $this->assertStringStartsWith('/storage/avatars/', $profile->avatarUrl());
-        $this->assertStringEndsWith('.jpeg', $profile->avatarUrl());
+        $this->assertStringEndsWith('.jpg', $profile->avatarUrl());
     }
 }
