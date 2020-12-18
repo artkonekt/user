@@ -16,6 +16,7 @@ public function getUser() : \Konekt\User\Contracts\User;
 ## Invitation Related Events
 
 - `UserInvitationCreated`
+- `UserIsBeingCreatedFromInvitation`
 - `UserInvitationUtilized`
 
 The first event only gets fired if the invitation is created with the `createInvitation` factory
@@ -30,12 +31,14 @@ $event->getInvitation();
 ```
 
 When the `UserInvitationCreated` gets fired, the user does not yet exist.
-The `UserInvitationUtilized` happens once a user has been created from the invitation, therefore
-this event also implements the `UserEvent` interface, and the created user can be obtained:
+
+`UserIsBeingCreatedFromInvitation` and `UserInvitationUtilized` events happen once a user is created
+from the invitation, therefore these events also implement the `UserEvent` interface, and the
+created/creating user can be obtained:
 
 ```php
 $userInvitationUtilizedEvent->getInvitation(); // The invitation
-$userInvitationUtilizedEvent->getUser(); // The user that has been created from the invitation
+$userInvitationUtilizedEvent->getUser(); // The user that has been/being created from the invitation
 ``` 
 
 ---

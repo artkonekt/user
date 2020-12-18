@@ -107,6 +107,56 @@ echo $user->type;
 The contents of the options array (`['role' => 'superadmin']`) is not processed by this library, but
 it's available for your application, and you can apply your logic based on what's in the array.
 
+### Hooking Into User Creation
+
+In case you want your app to hook into user creation from invitation, you can write listeners for
+the related events
+
+#### User Is Being Created Event
+
+The `UserIsBeingCreatedFromInvitation` gets fired when the user data is filled but not yet saved.
+If you define a listener to this event, you can manipulate the user object before it gets saved
+(assuming your listener is synchronous). The event will contain a user that doesn't yet have an id.
+
+**Example Listener**
+
+```php
+class PrependsPizzaToUserName
+{
+    public function handle(UserIsBeingCreatedFromInvitation $event)
+    {
+        $user = $event->getUser();
+        $user->name = 'Pizza ' . $user->name;
+        // Don't call the $user->save() method here
+    }
+}
+```
+
+#### User Invitation Utilized
+
+The `UserInvitationUtilized` (aka User Created from Invitation) event gets fired **after** a user
+gets created (based on an invitation). The event will contain a persisted user, that already has an
+id.
+
+**Example Listener**
+
+```php
+class CreatesAProfileFromInvitation
+{
+    public function handle(UserInvitationUtilized $event)
+    {
+        $user = $event->getUser();
+        $invitation = $event->getInvitation();
+        $person = Person::create([
+            'firstname' => $invitation->options['firstname'],
+            'lastname'  => $invitation->options['lastname'],
+        ]);
+
+        $user->profile()->create(['person_id' => $person->id]);
+    }
+}
+```
+
 ## The Created User
 
 If a user gets created from the invitation using the `createUser()` method, the created user gets
@@ -154,9 +204,10 @@ $invitation->isNoLongerValid();
 
 ## Invitation Events
 
-There are two Invitation event classes:
+There are three Invitation event classes:
 
 - `UserInvitationCreated`
+- `UserIsBeingCreatedFromInvitation`
 - `UserInvitationUtilized`
 
 See the [Events](events.md) page for more details about Invitation related events.
