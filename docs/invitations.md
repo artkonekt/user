@@ -58,6 +58,8 @@ config('konekt.user.invitation.default_expiry_days');
 // 30
 ```
 
+Change the value of this configuration entry to use another default days of expiry. 
+
 It is also possible to explicitly define expiration date for each invitation. 
 
 The last parameter of the invitation factory method is the expiration of the invitation in days:
