@@ -2,6 +2,11 @@
 
 ## 2.x Series
 
+### Unreleased
+##### 2020-12-XX
+
+- Added the Invitation feature
+
 ### 2.1.0
 ##### 2020-12-07
 

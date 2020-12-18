@@ -8,26 +8,27 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="User Module Test Suite">
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
-    <php>
-<!--        FOR POSTGRES:-->
-        <!--        <env name="TEST_DB_USERNAME" value="postgres"/>-->
-        <!--        <env name="TEST_DB_PASSWORD" value="password"/>-->
-        <!--        <env name="TEST_DB_ENGINE" value="pgsql"/>-->
-
-<!--        FOR MYSQL:-->
-        <!--        <env name="TEST_DB_USERNAME" value="mysql"/>-->
-        <!--        <env name="TEST_DB_PASSWORD" value="password"/>-->
-        <!--        <env name="TEST_DB_ENGINE" value="mysql"/>-->
-    </php>
+         stopOnFailure="false"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">src/</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="User Module Test Suite">
+      <directory suffix="Test.php">tests</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <!--        FOR POSTGRES:-->
+    <!--        <env name="TEST_DB_USERNAME" value="postgres"/>-->
+    <!--        <env name="TEST_DB_PASSWORD" value="password"/>-->
+    <!--        <env name="TEST_DB_ENGINE" value="pgsql"/>-->
+    <!--        FOR MYSQL:-->
+    <!--        <env name="TEST_DB_USERNAME" value="mysql"/>-->
+    <!--        <env name="TEST_DB_PASSWORD" value="password"/>-->
+    <!--        <env name="TEST_DB_ENGINE" value="mysql"/>-->
+  </php>
 </phpunit>
