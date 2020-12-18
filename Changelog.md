@@ -7,6 +7,7 @@
 
 - Added the Invitation feature
 - Changed CI from Travis to Github Actions
+- Improved the Documentation
 
 ### 2.1.0
 ##### 2020-12-07
