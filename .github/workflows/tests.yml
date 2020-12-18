@@ -37,11 +37,11 @@ jobs:
         run: php vendor/bin/phpunit --testdox
         env:
           TEST_DB_ENGINE: sqlite
-      - name: Run Tests [mysql]
-        run: php vendor/bin/phpunit --testdox
-        env:
-          TEST_DB_ENGINE: mysql
-          TEST_DB_PORT: ${{ job.services.mysql.ports[3306] }}
+#      - name: Run Tests [mysql]
+#        run: php vendor/bin/phpunit --testdox
+#        env:
+#          TEST_DB_ENGINE: mysql
+#          TEST_DB_PORT: ${{ job.services.mysql.ports[3306] }}
       - name: Run Tests [postgres]
         run: php vendor/bin/phpunit --testdox
         env:
