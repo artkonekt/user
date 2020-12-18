@@ -13,7 +13,7 @@ class CreateInvitationsTable extends Migration
             $table->intOrBigIntBasedOnRelated('user_id', Schema::connection(null), 'users.id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('hash')->unsigned();
+            $table->string('hash');
             $table->string('type');
             $table->json('options');
             $table->timestamp('expires_at')->nullable();
