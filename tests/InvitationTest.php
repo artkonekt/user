@@ -38,7 +38,7 @@ class InvitationTest extends TestCase
     public function the_created_user_is_null_by_default()
     {
         $invitation = Invitation::create([
-            'email' => 'heyho@yadda.yo'
+            'email' => 'heyho@y4dda.yo'
         ]);
 
         $this->assertNull($invitation->getTheCreatedUser());
@@ -48,7 +48,7 @@ class InvitationTest extends TestCase
     public function a_hash_gets_automatically_generated()
     {
         $invitation = Invitation::create([
-            'email' => 'heyho@yadda.yo'
+            'email' => 'heyh0@yadda.yo'
         ]);
 
         $this->assertIsString($invitation->hash);
@@ -70,7 +70,7 @@ class InvitationTest extends TestCase
     public function options_is_an_empty_array_by_default()
     {
         $invitation = Invitation::create([
-            'email' => 'heyho@yadda.yo'
+            'email' => 'eyho@yadda.yo'
         ]);
 
         $this->assertIsArray($invitation->options);
@@ -81,7 +81,7 @@ class InvitationTest extends TestCase
     public function type_is_the_default_user_type_if_unspecified()
     {
         $invitation = Invitation::create([
-            'email' => 'heyho@yadda.yo'
+            'email' => 'yadda@yadda.yo'
         ]);
 
         $this->assertInstanceOf(UserType::class, $invitation->type);
@@ -171,7 +171,7 @@ class InvitationTest extends TestCase
     public function extra_attributes_can_be_set_for_user_creation()
     {
         $invitation = Invitation::create([
-            'email' => 'giovanni@gatto.it',
+            'email' => 'aaron@phillips.sic',
         ]);
 
         $user = $invitation->createUser([
@@ -181,7 +181,7 @@ class InvitationTest extends TestCase
         ]);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals('giovanni@gatto.it', $user->email);
+        $this->assertEquals('aaron@phillips.sic', $user->email);
         $this->assertEquals('Aaron Phillips', $user->name);
         $this->assertTrue($user->is_active);
     }
@@ -219,7 +219,7 @@ class InvitationTest extends TestCase
     public function it_sets_the_user_id_and_utilized_at_date_upon_user_creation()
     {
         $invitation = Invitation::create([
-            'email' => 'giovanni@gatto.it',
+            'email' => 'aaron@phillips.nl',
             'name' => 'Aaron Phillips',
         ]);
 
@@ -254,10 +254,10 @@ class InvitationTest extends TestCase
     /** @test */
     public function the_type_can_be_passed_to_the_factory_method()
     {
-        $invitation = Invitation::createInvitation('clima@streik.de', null, UserType::API());
+        $invitation = Invitation::createInvitation('connector@api.com', null, UserType::API());
 
         $this->assertInstanceOf(Invitation::class, $invitation);
-        $this->assertEquals('clima@streik.de', $invitation->email);
+        $this->assertEquals('connector@api.com', $invitation->email);
         $this->assertTrue(UserType::API()->equals($invitation->type));
     }
 
@@ -265,7 +265,7 @@ class InvitationTest extends TestCase
     public function options_can_be_passed_to_the_factory_method()
     {
         $invitation = Invitation::createInvitation(
-            'clima@streik.de',
+            'admin@streik.de',
             null,
             UserType::ADMIN(),
             ['role' => 'admin']
@@ -279,7 +279,7 @@ class InvitationTest extends TestCase
     /** @test */
     public function expiration_days_can_be_passed_to_the_factory_method()
     {
-        $invitation = Invitation::createInvitation('clima@streik.de', null, null, [], 18);
+        $invitation = Invitation::createInvitation('clima@cloud.it', null, null, [], 18);
 
         $this->assertInstanceOf(Invitation::class, $invitation);
         $this->assertEquals(18, $invitation->expires_at->diffInDays());
@@ -308,14 +308,14 @@ class InvitationTest extends TestCase
     public function the_user_invitation_created_event_gets_fired_if_invitation_gets_created_with_factory_method()
     {
         $this->expectsEvents(UserInvitationCreated::class);
-        $invitation = Invitation::createInvitation('ich@auch.de');
+        $invitation = Invitation::createInvitation('bugaloo@boys.us');
     }
 
     /** @test */
     public function the_user_invitation_utilized_event_gets_fired_upon_user_creation()
     {
         $invitation = Invitation::create([
-            'email' => 'ich@auch.de',
+            'email' => 'unter@meinem-bett.de',
             'name' => 'Unter Meinem Bett'
         ]);
 
