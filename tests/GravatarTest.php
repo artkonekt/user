@@ -17,8 +17,6 @@ use Konekt\User\Models\Profile;
 
 class GravatarTest extends TestCase
 {
-    use PhpUnit6Compatible;
-
     /** @test */
     public function can_be_created_with_email_address()
     {

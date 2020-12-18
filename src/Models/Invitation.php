@@ -23,6 +23,7 @@ use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Contracts\UserType as UserTypeContract;
 use Konekt\User\Events\UserInvitationCreated;
 use Konekt\User\Events\UserInvitationUtilized;
+use Konekt\User\Events\UserIsBeingCreatedFromInvitation;
 
 /**
  * @property integer           $id
@@ -116,7 +117,16 @@ class Invitation extends Model implements InvitationContract
             $attributes['password'] = bcrypt($attributes['password']);
         }
 
-        $user = null === $userClass ? UserProxy::create($attributes) : $userClass::create($attributes);
+
+        $userClass = $userClass ?? UserProxy::modelClass();
+        /** @var Model $user */
+        $user = new $userClass();
+        $user->fill($attributes);
+
+        event(new UserIsBeingCreatedFromInvitation($this, $user));
+
+        $user->push();
+
         $this->user_id = $user->id;
         $this->utilized_at = Carbon::now();
         $this->save();

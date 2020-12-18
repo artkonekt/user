@@ -46,6 +46,32 @@ class ProfileTest extends TestCase
     }
 
     /** @test */
+    public function person_can_be_retrieved()
+    {
+        $user   = factory(User::class)->create();
+        $person = factory(Person::class)->create();
+
+        $profile = Profile::create([
+            'user_id'   => $user->id,
+            'person_id' => $person->id
+        ]);
+
+        $this->assertInstanceOf(Person::class, $profile->person);
+    }
+
+    /** @test */
+    public function it_can_be_assigned_to_a_user()
+    {
+        $user   = factory(User::class)->create();
+        $person = factory(Person::class)->create();
+
+        $user->profile()->create(['person_id' => $person->id]);
+
+        $this->assertInstanceOf(Profile::class, $user->profile);
+        $this->assertInstanceOf(Person::class, $user->profile->person);
+    }
+
+    /** @test */
     public function arbitrary_avatar_type_can_be_assigned_to_it()
     {
         $profile = factory(Profile::class)->create();

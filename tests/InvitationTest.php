@@ -15,11 +15,16 @@ declare(strict_types=1);
 namespace Konekt\User\Tests;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Event;
 use Konekt\User\Events\UserInvitationCreated;
 use Konekt\User\Events\UserInvitationUtilized;
+use Konekt\User\Events\UserIsBeingCreatedFromInvitation;
 use Konekt\User\Models\Invitation;
+use Konekt\User\Models\Profile;
 use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
+use Konekt\User\Tests\Dummies\CreatesAProfileFromInvitationOptionsListener;
+use Konekt\User\Tests\Dummies\PrependsPizzaToUserNameListener;
 use Konekt\User\Tests\Dummies\SpecialUser;
 
 class InvitationTest extends TestCase
@@ -373,5 +378,56 @@ class InvitationTest extends TestCase
 
         $this->expectsEvents(UserInvitationUtilized::class);
         $invitation->createUser(['password' => 'somepass']);
+    }
+
+    /** @test */
+    public function the_user_is_being_created_from_invitation_event_gets_fired_upon_user_creation()
+    {
+        $invitation = Invitation::create([
+            'email' => 'pizza@is-coming.hr',
+            'name' => 'Pizza Is Coming'
+        ]);
+
+        $this->expectsEvents(UserIsBeingCreatedFromInvitation::class);
+        $invitation->createUser(['password' => 'somepass']);
+    }
+
+    /** @test */
+    public function it_is_possible_to_hook_into_user_creation_and_manipulate_the_user_before_saving()
+    {
+        Event::listen(
+            UserIsBeingCreatedFromInvitation::class,
+            PrependsPizzaToUserNameListener::class
+        );
+
+        $invitation = Invitation::create([
+            'email' => 'pizza@is-coming-in-15-minutes.hr',
+            'name' => 'with Tomato 15'
+        ]);
+
+        $user = $invitation->createUser(['password' => 'somepass']);
+        $this->assertEquals('Pizza with Tomato 15', $user->name);
+    }
+
+    /** @test */
+    public function options_data_can_be_used_in_user_creation_hook_event()
+    {
+        Event::listen(
+            UserInvitationUtilized::class,
+            CreatesAProfileFromInvitationOptionsListener::class
+        );
+
+        $invitation = Invitation::create([
+            'email' => 'this.pizza@was.very.funky',
+            'name' => 'Funky Pizza',
+            'options' => [
+                'firstname' => 'Funky',
+                'lastname' => 'Pizza',
+            ]
+        ]);
+
+        $user = $invitation->createUser(['password' => 'somepass']);
+        $this->assertInstanceOf(Profile::class, $user->profile);
+        $this->assertEquals('Pizza', $user->profile->person->lastname);
     }
 }

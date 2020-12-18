@@ -12,6 +12,7 @@
 namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Konekt\Address\Models\PersonProxy;
 use Konekt\User\AvatarTypes;
 use Konekt\User\Contracts\Avatar;
 use Konekt\User\Contracts\Profile as ProfileContract;
@@ -31,6 +32,11 @@ class Profile extends Model implements ProfileContract
     public function user()
     {
         return $this->belongsTo(UserProxy::modelClass(), 'user_id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(PersonProxy::modelClass(), 'person_id');
     }
 
     public function setAvatar(Avatar $avatar)
