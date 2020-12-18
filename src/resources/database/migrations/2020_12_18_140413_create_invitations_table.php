@@ -28,6 +28,6 @@ class CreateInvitationsTable extends Migration
 
     public function down()
     {
-        Schema::drop('profiles');
+        Schema::drop('invitations');
     }
 }
