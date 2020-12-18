@@ -25,7 +25,7 @@ use Konekt\User\Tests\Dummies\SpecialUser;
 class InvitationTest extends TestCase
 {
     /** @test */
-    public function invitation_can_be_created_with_minimal_an_email_only()
+    public function invitation_can_be_created_with_email_only()
     {
         $invitation = Invitation::create([
             'email' => 'heyho@yadda.yo'
@@ -114,6 +114,58 @@ class InvitationTest extends TestCase
 
         $this->assertTrue($expiredInvitation->isExpired());
         $this->assertFalse($activeInvitation->isExpired());
+    }
+
+    /** @test */
+    public function it_can_tell_whether_it_has_been_utilized_already()
+    {
+        $invitation = Invitation::create([
+            'email' => 'mango@kitchen.be',
+            'name' => 'Mango'
+        ]);
+
+        $this->assertFalse($invitation->hasBeenUtilizedAlready());
+        $this->assertTrue($invitation->hasNotBeenUtilizedYet());
+
+        $invitation->createUser(['password' => 'asdqwe']);
+
+        $this->assertTrue($invitation->hasBeenUtilizedAlready());
+        $this->assertFalse($invitation->hasNotBeenUtilizedYet());
+    }
+
+    /** @test */
+    public function it_is_invalid_if_it_has_expired()
+    {
+        $invitation = Invitation::createInvitation('jan@kuciak.sk', 'Jan Kuciak', null, [], -2);
+
+        $this->assertTrue($invitation->isExpired());
+        $this->assertFalse($invitation->isStillValid());
+        $this->assertTrue($invitation->isNoLongerValid());
+    }
+
+    /** @test */
+    public function it_is_invalid_if_it_has_not_yet_expired_but_user_has_been_created_for()
+    {
+        $invitation = Invitation::createInvitation('jan@kollwitz.platz', 'Jan Hortner');
+        $invitation->createUser(['password' => 'meh']);
+
+        $this->assertTrue($invitation->isNotExpired());
+        $this->assertTrue($invitation->hasBeenUtilizedAlready());
+        $this->assertFalse($invitation->isStillValid());
+        $this->assertTrue($invitation->isNoLongerValid());
+    }
+
+    /** @test */
+    public function it_is_invalid_if_it_has_expired_and_user_has_been_created_for()
+    {
+        $invitation = Invitation::createInvitation('jan@sofort.de', 'Jan Dreesher', null, [], 0);
+        $invitation->createUser(['password' => 'mooh']);
+
+        Carbon::setTestNow(Carbon::tomorrow());
+        $this->assertTrue($invitation->isExpired());
+        $this->assertTrue($invitation->hasBeenUtilizedAlready());
+        $this->assertFalse($invitation->isStillValid());
+        $this->assertTrue($invitation->isNoLongerValid());
     }
 
     /** @test */
