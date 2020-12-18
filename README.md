@@ -1,6 +1,6 @@
 # Konekt User
 
-[![Travis Build Status](https://img.shields.io/travis/com/artkonekt/user.svg?style=flat-square)](https://travis-ci.com/artkonekt/user)
+[![Tests](https://img.shields.io/github/workflow/status/artkonekt/user/tests/master?style=flat-square)](https://github.com/artkonekt/user/actions?query=workflow%3Atests)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/user.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/user)
 [![StyleCI](https://styleci.io/repos/74651266/shield?branch=master)](https://styleci.io/repos/74651266)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/user.svg?style=flat-square)](https://packagist.org/packages/konekt/user)
