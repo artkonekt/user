@@ -2,10 +2,11 @@
 
 ## 2.x Series
 
-### Unreleased
-##### 2020-12-XX
+### 2.2.0
+##### 2020-12-19
 
 - Added the Invitation feature
+- Fixed user -> profile -> person relationships
 - Changed CI from Travis to Github Actions
 - Improved the Documentation
 
