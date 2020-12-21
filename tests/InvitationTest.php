@@ -122,6 +122,39 @@ class InvitationTest extends TestCase
     }
 
     /** @test */
+    public function the_pending_scope_excludes_expired_items()
+    {
+        $invitation = Invitation::create([
+            'email'      => 'mangozoli@kitchen.be',
+            'name'       => 'Mango Zoli',
+            'expires_at' => Carbon::now()->subMinute()
+        ]);
+
+        $this->assertTrue($invitation->isExpired());
+        $this->assertCount(0, Invitation::pending()->get());
+
+        $invitation->expires_at = Carbon::now()->addMinute();
+        $invitation->save();
+
+        $this->assertCount(1, Invitation::pending()->get());
+    }
+
+    /** @test */
+    public function the_pending_scope_excludes_utilized_items()
+    {
+        $invitation = Invitation::create([
+            'email'      => 'bangomargit@kitchen.be',
+            'name'       => 'Bango Margit'
+        ]);
+
+        $this->assertCount(1, Invitation::pending()->get());
+
+        $invitation->createUser(['password' => 'meh']);
+
+        $this->assertCount(0, Invitation::pending()->get());
+    }
+
+    /** @test */
     public function it_can_tell_whether_it_has_been_utilized_already()
     {
         $invitation = Invitation::create([

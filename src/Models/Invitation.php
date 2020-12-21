@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Konekt\User\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Konekt\Enum\Eloquent\CastsEnums;
@@ -174,6 +175,13 @@ class Invitation extends Model implements InvitationContract
     public function user()
     {
         return $this->belongsTo(UserProxy::modelClass(), 'user_id');
+    }
+
+    public function scopePending(Builder $query)
+    {
+        return $query
+            ->whereNull('user_id')
+            ->where('expires_at', '>', Carbon::now()->toDateTimeString());
     }
 
     protected static function boot()
