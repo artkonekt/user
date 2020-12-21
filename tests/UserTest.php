@@ -24,8 +24,8 @@ class UserTest extends TestCase
     public function it_can_be_created()
     {
         $user = User::create([
-            'email' => 'zodiac@signs.oh',
-            'name' => 'Taurus',
+            'email'    => 'zodiac@signs.oh',
+            'name'     => 'Taurus',
             'password' => 'meow'
         ]);
 
@@ -38,7 +38,7 @@ class UserTest extends TestCase
         $user = factory(User::class)->create();
         $person = factory(Person::class)->create([
             'firstname' => 'Fritz',
-            'lastname' => 'Teufel',
+            'lastname'  => 'Teufel',
         ]);
 
         $user->profile()->create([

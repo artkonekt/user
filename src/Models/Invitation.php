@@ -71,10 +71,9 @@ class Invitation extends Model implements InvitationContract
         ?UserTypeContract $type = null,
         array $options = [],
         ?int $expiresInDays = null
-    ): self
-    {
+    ): self {
         $attributes = [
-            'email' => $email,
+            'email'   => $email,
             'options' => $options
         ];
 
@@ -110,14 +109,13 @@ class Invitation extends Model implements InvitationContract
     {
         $attributes = array_merge([
             'email' => $this->email,
-            'name' => $this->name,
-            'type' => $this->type,
+            'name'  => $this->name,
+            'type'  => $this->type,
         ], $furtherAttributes);
 
         if (!$dontEncryptPassword && isset($attributes['password'])) {
             $attributes['password'] = bcrypt($attributes['password']);
         }
-
 
         $userClass = $userClass ?? UserProxy::modelClass();
         /** @var Model $user */
@@ -189,7 +187,6 @@ class Invitation extends Model implements InvitationContract
         parent::boot();
 
         static::creating(function ($model) {
-
             if (null === $model->hash) {
                 $model->hash = static::generateInvitationCode();
             }
