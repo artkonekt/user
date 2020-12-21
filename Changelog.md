@@ -2,6 +2,11 @@
 
 ## 2.x Series
 
+### 2.3.0
+##### 2020-12-21
+
+- Added the `pending()` scope to the Invitation model
+
 ### 2.2.0
 ##### 2020-12-19
 
