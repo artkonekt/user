@@ -2,8 +2,8 @@
 
 ## 2.x Series
 
-## Unreleased
-##### 2022-03-XX
+## 2.4.0
+##### 2022-03-10
 
 - Added Enum v4 support
 - Added PHP 8.1 support

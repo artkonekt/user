@@ -50,4 +50,4 @@ If the "final" user class is not going to be `App\User` then don't forget to mod
 | 7.3 | 1.1 - 1.5   |
 | 7.4 | 1.4 - 1.5   |
 | 8.0 | 2.1+        |
-| 8.1 | 2.1+        |
+| 8.1 | 2.4+        |
