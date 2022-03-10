@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Konekt\User\Tests;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
 use Konekt\User\Events\UserInvitationCreated;
 use Konekt\User\Events\UserInvitationUtilized;
@@ -215,7 +216,7 @@ class InvitationTest extends TestCase
 
         $this->assertEquals(
             config('konekt.user.invitation.default_expiry_days'),
-            $invitation->expires_at->diffInDays()
+            round($invitation->expires_at->floatDiffInDays())
         );
     }
 
@@ -372,7 +373,7 @@ class InvitationTest extends TestCase
         $invitation = Invitation::createInvitation('clima@cloud.it', null, null, [], 18);
 
         $this->assertInstanceOf(Invitation::class, $invitation);
-        $this->assertEquals(18, $invitation->expires_at->diffInDays());
+        $this->assertEquals(18, round($invitation->expires_at->floatDiffInDays()));
     }
 
     /** @test */
@@ -391,14 +392,18 @@ class InvitationTest extends TestCase
         $this->assertEquals('Lego Floor', $invitation->name);
         $this->assertTrue(UserType::API()->equals($invitation->type));
         $this->assertEquals(['role' => 'shop admin'], $invitation->options);
-        $this->assertEquals(23, $invitation->expires_at->diffInDays());
+        $this->assertEquals(23, round($invitation->expires_at->floatDiffInDays()));
     }
 
     /** @test */
     public function the_user_invitation_created_event_gets_fired_if_invitation_gets_created_with_factory_method()
     {
-        $this->expectsEvents(UserInvitationCreated::class);
-        $invitation = Invitation::createInvitation('bugaloo@boys.us');
+        /** @see https://github.com/laravel/framework/issues/18066#issuecomment-342630971 */
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
+        Invitation::createInvitation('bugaloo@boys.us');
+        Event::assertDispatched(UserInvitationCreated::class);
     }
 
     /** @test */
@@ -409,8 +414,9 @@ class InvitationTest extends TestCase
             'name'  => 'Unter Meinem Bett'
         ]);
 
-        $this->expectsEvents(UserInvitationUtilized::class);
+        Event::fake();
         $invitation->createUser(['password' => 'somepass']);
+        Event::assertDispatched(UserInvitationUtilized::class);
     }
 
     /** @test */
@@ -421,8 +427,9 @@ class InvitationTest extends TestCase
             'name'  => 'Pizza Is Coming'
         ]);
 
-        $this->expectsEvents(UserIsBeingCreatedFromInvitation::class);
+        Event::fake();
         $invitation->createUser(['password' => 'somepass']);
+        Event::assertDispatched(UserInvitationUtilized::class);
     }
 
     /** @test */
