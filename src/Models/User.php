@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Konekt\Enum\Eloquent\CastsEnums;
-use Konekt\User\Contracts\Profile;
 use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Events\UserWasActivated;
