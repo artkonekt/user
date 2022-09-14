@@ -2,6 +2,11 @@
 
 ## 2.x Series
 
+## Unreleased
+##### 2022-XX-YY
+
+- Added method and property annotations to models and enums
+
 ## 2.4.0
 ##### 2022-03-10
 
