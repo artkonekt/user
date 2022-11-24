@@ -38,7 +38,7 @@ this to your app's `config/auth.php` file:
 | 5.8     | 1.0 - 1.4   |
 | 6.x     | 1.3 - 2.3   |
 | 7.x     | 1.4 - 2.3   |
-| 8.x     | 1.5+, 2.0+  |
+| 8.x     | 1.5 - 2.5   |
 | 9.x     | 2.1+        |
 
 ## PHP Compatibility
@@ -52,3 +52,4 @@ this to your app's `config/auth.php` file:
 | 7.4 | 1.4 - 1.5   |
 | 8.0 | 2.1+        |
 | 8.1 | 2.4+        |
+| 8.2 | 2.6+        |

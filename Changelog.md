@@ -2,8 +2,8 @@
 
 ## 2.x Series
 
-## UNreleased
-##### 2022-11-XX
+## 2.6.0
+##### 2022-11-24
 
 - Added PHP 8.2 support
 - Dropped Laravel 8 support
