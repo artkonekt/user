@@ -2,6 +2,14 @@
 
 ## 2.x Series
 
+## UNreleased
+##### 2022-11-XX
+
+- Added PHP 8.2 support
+- Dropped Laravel 8 support
+- Changed minimum Laravel version to 9.2
+- Allowing Doctrine DBAL v3
+
 ## 2.5.0
 ##### 2022-09-14
 
