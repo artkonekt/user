@@ -27,4 +27,4 @@ For modifying possible user type values refer to [Customization](customize.md).
 
 ---
 
-**Next**: [Profile &raquo;](profile.md)
+**Next**: [Invitations &raquo;](invitations.md)

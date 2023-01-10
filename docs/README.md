@@ -1,6 +1,6 @@
 # User Module Documentation
 
-The Konekt User Module is a Laravel Extension that extends the built in Laravel user class
+The Konekt User Module is a Laravel Extension that extends the built-in Laravel user functionality
 with some common use cases.
 
 ## Features
@@ -8,6 +8,7 @@ with some common use cases.
 - Possibility to activate/inactivate users;
 - Handling user types ('Admin', 'Client' and 'API' out of the box);
 - Profiles & Personal data;
+- Create Invitations for new users
 - Avatar images;
 - Login statistics;
 - User related events.

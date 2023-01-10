@@ -12,11 +12,25 @@
 namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+use Konekt\Address\Models\Person;
+use Konekt\Address\Models\PersonProxy;
 use Konekt\User\AvatarTypes;
 use Konekt\User\Contracts\Avatar;
 use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Contracts\User;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property User $user
+ * @property int $person_id
+ * @property Person $person
+ * @property string|null $avatar_type
+ * @property string|null $avatar_data
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Profile extends Model implements ProfileContract
 {
     protected $table = 'profiles';
@@ -31,6 +45,11 @@ class Profile extends Model implements ProfileContract
     public function user()
     {
         return $this->belongsTo(UserProxy::modelClass(), 'user_id');
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(PersonProxy::modelClass(), 'person_id');
     }
 
     public function setAvatar(Avatar $avatar)
@@ -75,8 +94,6 @@ class Profile extends Model implements ProfileContract
             return null;
         }
 
-        $avatar = $this->getAvatar();
-
-        return $avatar ? $avatar->getUrl($variant) : null;
+        return $this->getAvatar()?->getUrl($variant);
     }
 }

@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-### Use a Completely Custom User Types
+### Use Completely Custom User Types
 
 It's not mandatory to use any of the default user types, thus you can use your own, completely
 custom UserType enum. The only requirements are:

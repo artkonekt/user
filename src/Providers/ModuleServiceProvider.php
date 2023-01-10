@@ -12,6 +12,7 @@
 namespace Konekt\User\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
+use Konekt\User\Models\Invitation;
 use Konekt\User\Models\Profile;
 use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
@@ -21,7 +22,8 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     /** @var array */
     protected $models = [
         User::class,
-        Profile::class
+        Profile::class,
+        Invitation::class,
     ];
 
     /** @var array */

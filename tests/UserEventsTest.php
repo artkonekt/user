@@ -11,6 +11,7 @@
 
 namespace Konekt\User\Tests;
 
+use Illuminate\Support\Facades\Event;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
@@ -34,11 +35,12 @@ class UserEventsTest extends TestCase
      */
     public function inactivating_a_user_fires_user_was_inactivated_event()
     {
-        $this->expectsEvents(UserWasInactivated::class);
+        Event::fake();
 
         $user = factory(User::class)->create();
-
         $user->inactivate();
+
+        Event::assertDispatched(UserWasInactivated::class);
     }
 
     /**

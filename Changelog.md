@@ -2,6 +2,46 @@
 
 ## 2.x Series
 
+## 2.6.0
+##### 2022-11-24
+
+- Added PHP 8.2 support
+- Dropped Laravel 8 support
+- Changed minimum Laravel version to 9.2
+- Allowing Doctrine DBAL v3
+
+## 2.5.0
+##### 2022-09-14
+
+- Added method and property annotations to models and enums
+
+## 2.4.0
+##### 2022-03-10
+
+- Added Enum v4 support
+- Added PHP 8.1 support
+- Dropped PHP 7.3 & 7.4 support
+- Dropped Laravel 6 & 7 support
+- Changed minimum Laravel version to 8.22.1, to enforce the [CVE-2021-21263](https://blog.laravel.com/security-laravel-62011-7302-8221-released) security patch
+
+### 2.3.0
+##### 2020-12-21
+
+- Added the `pending()` scope to the Invitation model
+
+### 2.2.0
+##### 2020-12-19
+
+- Added the Invitation feature
+- Fixed user -> profile -> person relationships
+- Changed CI from Travis to Github Actions
+- Improved the Documentation
+
+### 2.1.0
+##### 2020-12-07
+
+- Added PHP 8 support
+
 ### 2.0.0
 ##### 2020-10-11
 
