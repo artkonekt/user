@@ -1,6 +1,6 @@
 # Konekt User
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/user/tests/2.x?style=flat-square)](https://github.com/artkonekt/user/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/actions/workflow/status/artkonekt/user/tests.yml?branch=2.x&style=flat-square)](https://github.com/artkonekt/user/actions?query=workflow%3Atests)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/user.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/user)
 [![StyleCI](https://styleci.io/repos/74651266/shield?branch=master)](https://styleci.io/repos/74651266)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/user.svg?style=flat-square)](https://packagist.org/packages/konekt/user)
