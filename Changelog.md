@@ -2,6 +2,11 @@
 
 ## 2.x Series
 
+## Unreleased
+##### 2023-XX-YY
+
+- Added Laravel 10 support
+
 ## 2.6.0
 ##### 2022-11-24
 
