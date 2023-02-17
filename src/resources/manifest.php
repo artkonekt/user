@@ -2,5 +2,5 @@
 
 return [
     'name'    => 'Konekt User Module',
-    'version' => '2.6.0'
+    'version' => '2.7.0'
 ];

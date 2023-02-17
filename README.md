@@ -40,6 +40,7 @@ this to your app's `config/auth.php` file:
 | 7.x     | 1.4 - 2.3   |
 | 8.x     | 1.5 - 2.5   |
 | 9.x     | 2.1+        |
+| 10.x    | 2.7+        |
 
 ## PHP Compatibility
 
