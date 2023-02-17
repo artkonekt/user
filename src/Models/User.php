@@ -48,8 +48,8 @@ class User extends Authenticatable implements UserContract
     ];
 
     protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'created_at'    => 'datetime',
+        'updated_at'    => 'datetime',
         'last_login_at' => 'datetime',
     ];
 

@@ -56,11 +56,11 @@ class Invitation extends Model implements InvitationContract
     ];
 
     protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'expires_at' => 'datetime',
+        'created_at'  => 'datetime',
+        'updated_at'  => 'datetime',
+        'expires_at'  => 'datetime',
         'utilized_at' => 'datetime',
-        'options' => 'json',
+        'options'     => 'json',
     ];
 
     protected $enums = [
