@@ -5,7 +5,12 @@
 ## Unreleased
 ##### 2023-XX-YY
 
-- Added Laravel 10 support
+- Dropped Laravel 9 support
+- Dropped PHP 8.0 support
+- Changed minimum version requirements to:
+  - Enum v4.1
+  - Address v3.0
+  - Doctrine DBAL v3.5.1
 
 ## 2.7.0
 ##### 2023-02-17
