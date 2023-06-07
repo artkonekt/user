@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the Gravatar class.
  *
@@ -15,7 +17,7 @@ use Konekt\User\Contracts\Avatar;
 
 final class Gravatar implements Avatar
 {
-    const CONFIG_ROOT_KEY = 'konekt.user.avatar.gravatar.';
+    public const CONFIG_ROOT_KEY = 'konekt.user.avatar.gravatar.';
 
     /** @var string */
     private $email;
@@ -46,9 +48,9 @@ final class Gravatar implements Avatar
 
     public function getUrl(string $variant = null): string
     {
-        $hash    = md5($this->email);
+        $hash = md5($this->email);
         $default = $this->config('default_image');
-        $size    = is_null($variant) ? $this->config('default_size') : (int) $variant;
+        $size = is_null($variant) ? $this->config('default_size') : (int) $variant;
 
         return sprintf(
             "https://www.gravatar.com/avatar/%s.jpg?s=%d&d=%s",

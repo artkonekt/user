@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Faker\Generator as Faker;
 use Konekt\Address\Models\Person;
 use Konekt\User\Models\Profile;

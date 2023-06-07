@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the StorageAvatar class.
  *
@@ -17,7 +19,7 @@ use Konekt\User\Contracts\Avatar;
 
 final class StorageAvatar implements Avatar
 {
-    const CONFIG_ROOT_KEY = 'konekt.user.avatar.storage.';
+    public const CONFIG_ROOT_KEY = 'konekt.user.avatar.storage.';
 
     /** @var string */
     private $file;

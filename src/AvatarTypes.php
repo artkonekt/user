@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the AvatarTypes class.
  *
@@ -17,7 +19,7 @@ use Konekt\User\Avatar\StorageAvatar;
 final class AvatarTypes
 {
     private const BUILT_IN_TYPES = [
-        'storage'  => StorageAvatar::class,
+        'storage' => StorageAvatar::class,
         'gravatar' => Gravatar::class
     ];
 

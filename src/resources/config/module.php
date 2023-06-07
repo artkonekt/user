@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'avatar' => [
         'storage' => [
@@ -7,7 +9,7 @@ return [
         ],
         'gravatar' => [
             'default_image' => 'mp', // https://en.gravatar.com/site/implement/images/#default-image
-            'default_size'  => 100
+            'default_size' => 100
         ]
     ],
     'invitation' => [

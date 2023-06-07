@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the UserType enum class.
  *
@@ -29,9 +31,9 @@ use Konekt\User\Contracts\UserType as UserTypeContract;
  */
 class UserType extends Enum implements UserTypeContract
 {
-    const __DEFAULT = self::CLIENT;
+    public const __DEFAULT = self::CLIENT;
 
-    const ADMIN     = 'admin';
-    const CLIENT    = 'client';
-    const API       = 'api';
+    public const ADMIN = 'admin';
+    public const CLIENT = 'client';
+    public const API = 'api';
 }

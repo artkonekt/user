@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the GravatarTest class.
  *
@@ -35,7 +37,7 @@ class GravatarTest extends TestCase
         /** @var Profile $profile */
         $profile = factory(Profile::class)->create();
         // This sucks like hell, email should be taken from user/profile and not hardcoded like this
-        $avatar  = Gravatar::create('user@example.com');
+        $avatar = Gravatar::create('user@example.com');
 
         $profile->setAvatar($avatar);
         $profile->save();

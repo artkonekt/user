@@ -25,7 +25,7 @@ class CreatesAProfileFromInvitationOptionsListener
         $invitation = $event->getInvitation();
         $person = Person::create([
             'firstname' => $invitation->options['firstname'],
-            'lastname'  => $invitation->options['lastname'],
+            'lastname' => $invitation->options['lastname'],
         ]);
 
         $user->profile()->create(['person_id' => $person->id]);

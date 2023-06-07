@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the User entity class.
  *
@@ -12,12 +14,12 @@
 namespace Konekt\User\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Konekt\Enum\Eloquent\CastsEnums;
-use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Contracts\Profile as ProfileContract;
+use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Events\UserWasActivated;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
@@ -39,7 +41,9 @@ use Konekt\User\Events\UserWasInactivated;
  */
 class User extends Authenticatable implements UserContract
 {
-    use Notifiable, SoftDeletes, CastsEnums;
+    use Notifiable;
+    use SoftDeletes;
+    use CastsEnums;
 
     protected $table = 'users';
 
@@ -48,8 +52,8 @@ class User extends Authenticatable implements UserContract
     ];
 
     protected $casts = [
-        'created_at'    => 'datetime',
-        'updated_at'    => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
         'last_login_at' => 'datetime',
     ];
 

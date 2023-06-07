@@ -24,7 +24,9 @@ use Konekt\User\Models\UserType;
 
 class SpecialUser extends Authenticatable implements UserContract
 {
-    use Notifiable, SoftDeletes, CastsEnums;
+    use Notifiable;
+    use SoftDeletes;
+    use CastsEnums;
 
     protected $table = 'users';
 

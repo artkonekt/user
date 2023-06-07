@@ -66,7 +66,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'cookies@xmas.tr',
-            'hash'  => 'h1s7lhvernfqrp28oicj;of4uh'
+            'hash' => 'h1s7lhvernfqrp28oicj;of4uh'
         ]);
 
         $this->assertEquals('h1s7lhvernfqrp28oicj;of4uh', $invitation->hash);
@@ -99,7 +99,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'trump@whitehouse.gov',
-            'type'  => UserType::ADMIN
+            'type' => UserType::ADMIN
         ]);
 
         $this->assertEquals(UserType::ADMIN, $invitation->type->value());
@@ -109,12 +109,12 @@ class InvitationTest extends TestCase
     public function it_can_tell_if_it_is_expired()
     {
         $expiredInvitation = Invitation::create([
-            'email'      => 'meg@meg.gr',
+            'email' => 'meg@meg.gr',
             'expires_at' => Carbon::yesterday()
         ]);
 
         $activeInvitation = Invitation::create([
-            'email'      => 'jol@meg.gr',
+            'email' => 'jol@meg.gr',
             'expires_at' => Carbon::tomorrow()
         ]);
 
@@ -126,8 +126,8 @@ class InvitationTest extends TestCase
     public function the_pending_scope_excludes_expired_items()
     {
         $invitation = Invitation::create([
-            'email'      => 'mangozoli@kitchen.be',
-            'name'       => 'Mango Zoli',
+            'email' => 'mangozoli@kitchen.be',
+            'name' => 'Mango Zoli',
             'expires_at' => Carbon::now()->subMinute()
         ]);
 
@@ -144,8 +144,8 @@ class InvitationTest extends TestCase
     public function the_pending_scope_excludes_utilized_items()
     {
         $invitation = Invitation::create([
-            'email'      => 'bangomargit@kitchen.be',
-            'name'       => 'Bango Margit'
+            'email' => 'bangomargit@kitchen.be',
+            'name' => 'Bango Margit'
         ]);
 
         $this->assertCount(1, Invitation::pending()->get());
@@ -160,7 +160,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'mango@kitchen.be',
-            'name'  => 'Mango'
+            'name' => 'Mango'
         ]);
 
         $this->assertFalse($invitation->hasBeenUtilizedAlready());
@@ -227,7 +227,7 @@ class InvitationTest extends TestCase
         $hash = '8f2dac384ea6c6ad3gf0hd83jvna86mn6ths';
         Invitation::create([
             'email' => 'tegel@closed.is',
-            'hash'  => $hash
+            'hash' => $hash
         ]);
 
         $invitation = Invitation::findByHash($hash);
@@ -248,8 +248,8 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'giovanni@gatto.it',
-            'name'  => 'Giovanni Gatto',
-            'type'  => UserType::ADMIN,
+            'name' => 'Giovanni Gatto',
+            'type' => UserType::ADMIN,
         ]);
 
         $user = $invitation->createUser(['password' => 'yourefired']);
@@ -267,8 +267,8 @@ class InvitationTest extends TestCase
         ]);
 
         $user = $invitation->createUser([
-            'name'      => 'Aaron Phillips',
-            'password'  => 'yourefired',
+            'name' => 'Aaron Phillips',
+            'password' => 'yourefired',
             'is_active' => true
         ]);
 
@@ -283,7 +283,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'special@ginger.ca',
-            'name'  => 'Emma Taylor',
+            'name' => 'Emma Taylor',
         ]);
 
         $user = $invitation->createUser(
@@ -300,7 +300,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'oma@7burg.en',
-            'name'  => 'Meme',
+            'name' => 'Meme',
         ]);
 
         $user = $invitation->createUser(['password' => 'palincademere']);
@@ -312,7 +312,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'aaron@phillips.nl',
-            'name'  => 'Aaron Phillips',
+            'name' => 'Aaron Phillips',
         ]);
 
         $testNow = Carbon::now();
@@ -412,7 +412,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'unter@meinem-bett.de',
-            'name'  => 'Unter Meinem Bett'
+            'name' => 'Unter Meinem Bett'
         ]);
 
         Event::fake();
@@ -425,7 +425,7 @@ class InvitationTest extends TestCase
     {
         $invitation = Invitation::create([
             'email' => 'pizza@is-coming.hr',
-            'name'  => 'Pizza Is Coming'
+            'name' => 'Pizza Is Coming'
         ]);
 
         Event::fake();
@@ -443,7 +443,7 @@ class InvitationTest extends TestCase
 
         $invitation = Invitation::create([
             'email' => 'pizza@is-coming-in-15-minutes.hr',
-            'name'  => 'with Tomato 15'
+            'name' => 'with Tomato 15'
         ]);
 
         $user = $invitation->createUser(['password' => 'somepass']);
@@ -459,11 +459,11 @@ class InvitationTest extends TestCase
         );
 
         $invitation = Invitation::create([
-            'email'   => 'this.pizza@was.very.funky',
-            'name'    => 'Funky Pizza',
+            'email' => 'this.pizza@was.very.funky',
+            'name' => 'Funky Pizza',
             'options' => [
                 'firstname' => 'Funky',
-                'lastname'  => 'Pizza',
+                'lastname' => 'Pizza',
             ]
         ]);
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the UserTypeTest class.
  *
@@ -70,7 +72,7 @@ class UserTypeTest extends TestCase
         );
 
         $default = factory(User::class)->create();
-        $master  = factory(User::class)->create(['type' => 'master']);
+        $master = factory(User::class)->create(['type' => 'master']);
         $servant = factory(User::class)->create(['type' => 'servant']);
 
         $this->assertEquals(MyUserType::defaultValue(), $default->type->value());

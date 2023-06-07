@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Contains the TestCase class.
  *
@@ -13,9 +15,9 @@ namespace Konekt\User\Tests;
 
 use Faker\Generator;
 use Konekt\Address\Providers\ModuleServiceProvider as AddressModule;
+use Konekt\Concord\ConcordServiceProvider;
 use Konekt\LaravelMigrationCompatibility\LaravelMigrationCompatibilityProvider;
 use Konekt\User\Providers\ModuleServiceProvider as UserModule;
-use Konekt\Concord\ConcordServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -56,13 +58,13 @@ abstract class TestCase extends Orchestra
 
         $app['config']->set('database.default', $engine);
         $app['config']->set('database.connections.' . $engine, [
-            'driver'   => $engine,
+            'driver' => $engine,
             'database' => 'sqlite' == $engine ? ':memory:' : 'user_test',
-            'prefix'   => '',
-            'host'     => env('TEST_DB_HOST', '127.0.0.1'),
+            'prefix' => '',
+            'host' => env('TEST_DB_HOST', '127.0.0.1'),
             'username' => env('TEST_DB_USERNAME', 'pgsql' === $engine ? 'postgres' : 'root'),
             'password' => env('TEST_DB_PASSWORD', ''),
-            'port'     => env('TEST_DB_PORT'),
+            'port' => env('TEST_DB_PORT'),
         ]);
 
         if ('pgsql' === $engine) {

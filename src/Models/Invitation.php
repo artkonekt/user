@@ -56,11 +56,11 @@ class Invitation extends Model implements InvitationContract
     ];
 
     protected $casts = [
-        'created_at'  => 'datetime',
-        'updated_at'  => 'datetime',
-        'expires_at'  => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'expires_at' => 'datetime',
         'utilized_at' => 'datetime',
-        'options'     => 'json',
+        'options' => 'json',
     ];
 
     protected $enums = [
@@ -75,7 +75,7 @@ class Invitation extends Model implements InvitationContract
         ?int $expiresInDays = null
     ): self {
         $attributes = [
-            'email'   => $email,
+            'email' => $email,
             'options' => $options
         ];
 
@@ -111,8 +111,8 @@ class Invitation extends Model implements InvitationContract
     {
         $attributes = array_merge([
             'email' => $this->email,
-            'name'  => $this->name,
-            'type'  => $this->type,
+            'name' => $this->name,
+            'type' => $this->type,
         ], $furtherAttributes);
 
         if (!$dontEncryptPassword && isset($attributes['password'])) {
