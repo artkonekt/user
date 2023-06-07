@@ -210,13 +210,14 @@ class InvitationTest extends TestCase
     /** @test */
     public function it_sets_default_expiration_date_from_config()
     {
+        Carbon::setTestNow('2023-03-01T08:00:00Z');
         $invitation = Invitation::create([
             'email' => 'pizza@holzmarkt.berlin'
         ]);
 
         $this->assertEquals(
             config('konekt.user.invitation.default_expiry_days'),
-            round($invitation->expires_at->floatDiffInDays())
+            round($invitation->expires_at->floatDiffInDays()),
         );
     }
 

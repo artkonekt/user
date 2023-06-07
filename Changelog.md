@@ -7,6 +7,11 @@
 
 - Added Laravel 10 support
 
+## 2.7.0
+##### 2023-02-17
+
+- Added Laravel 10 support
+
 ## 2.6.0
 ##### 2022-11-24
 

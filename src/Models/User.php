@@ -47,7 +47,11 @@ class User extends Authenticatable implements UserContract
         'name', 'email', 'password', 'type', 'is_active'
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'last_login_at'];
+    protected $casts = [
+        'created_at'    => 'datetime',
+        'updated_at'    => 'datetime',
+        'last_login_at' => 'datetime',
+    ];
 
     protected $enums = [
         'type' => 'UserTypeProxy@enumClass'
