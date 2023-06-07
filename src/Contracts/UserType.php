@@ -11,6 +11,8 @@
 
 namespace Konekt\User\Contracts;
 
-interface UserType
+use Konekt\Enum\EnumInterface;
+
+interface UserType extends EnumInterface
 {
 }

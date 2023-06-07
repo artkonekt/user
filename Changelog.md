@@ -5,6 +5,7 @@
 ## Unreleased
 ##### 2023-XX-YY
 
+- BC: Changed the `UserType` interface so that it now extends the `EnumInterface`
 - Dropped Laravel 9 support
 - Dropped PHP 8.0 support
 - Changed minimum version requirements to:

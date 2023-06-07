@@ -1,5 +1,13 @@
 # Upgrade
 
+## 2.x -> 3.x
+
+### Enum Interface
+
+The `UserType` interface extends the v4.1 `EnumInterface`, meaning it has more methods than before.
+It's almost certain that you don't need to do anything with it, because the base Enum class implements
+those methods. Regardless of that, it's a breaking change anyway.
+
 ## 1.x -> 2.x
 
 The package has dropped Laravel 5 support. The new minimal requirements are:
