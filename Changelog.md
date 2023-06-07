@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.x Series
+## 3.x Series
 
 ## Unreleased
 ##### 2023-XX-YY
@@ -11,6 +11,10 @@
   - Enum v4.1
   - Address v3.0
   - Doctrine DBAL v3.5.1
+
+---
+
+## 2.x Series
 
 ## 2.7.0
 ##### 2023-02-17
@@ -62,6 +66,8 @@
 
 - BC: Enums have been upgraded to v3
 - Dropped Laravel 5 support
+
+---
 
 ## 1.x Series
 
@@ -118,7 +124,9 @@
 - Improved interfaces (Contracts)
 - Proper/working Avatar support
 
-## 0.9 Series
+---
+
+## 0.x Series
 
 ### 0.9.0
 ##### 2017-12-11
