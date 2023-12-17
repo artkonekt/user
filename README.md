@@ -54,3 +54,4 @@ this to your app's `config/auth.php` file:
 | 8.0 | 2.1+        |
 | 8.1 | 2.4+        |
 | 8.2 | 2.6+        |
+| 8.3 | 2.8+        |
