@@ -15,7 +15,6 @@ namespace Konekt\User\Tests;
 
 use Konekt\Enum\Enum;
 use Konekt\User\Contracts\UserType as UserTypeContract;
-use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
 use Konekt\User\Tests\Dummies\MyUserType;
 use Konekt\User\Tests\Factories\UserFactory;

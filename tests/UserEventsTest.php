@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Event;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
-use Konekt\User\Models\User;
 use Konekt\User\Tests\Factories\UserFactory;
 
 class UserEventsTest extends TestCase

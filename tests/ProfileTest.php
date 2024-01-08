@@ -20,7 +20,6 @@ use Konekt\User\Avatar\StorageAvatar;
 use Konekt\User\AvatarTypes;
 use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Models\Profile;
-use Konekt\User\Models\User;
 use Konekt\User\Tests\Dummies\DummyAvatar;
 use Konekt\User\Tests\Factories\PersonFactory;
 use Konekt\User\Tests\Factories\ProfileFactory;
