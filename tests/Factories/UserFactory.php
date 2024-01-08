@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Konekt\User\Tests\Factories;
+
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use Konekt\User\Models\User;
