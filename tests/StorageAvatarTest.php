@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Konekt\User\Avatar\StorageAvatar;
 use Konekt\User\Contracts\Avatar;
 use Konekt\User\Models\Profile;
+use Konekt\User\Tests\Factories\ProfileFactory;
 
 class StorageAvatarTest extends TestCase
 {
@@ -64,7 +65,7 @@ class StorageAvatarTest extends TestCase
     public function works_with_the_profile_model()
     {
         /** @var Profile $profile */
-        $profile = factory(Profile::class)->create();
+        $profile = ProfileFactory::new()->create();
         $uploadedFile = UploadedFile::fake()->image('test_avatar.jpg', 85, 85);
         $avatar = StorageAvatar::upload($uploadedFile);
 

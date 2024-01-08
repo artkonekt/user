@@ -14,9 +14,10 @@ declare(strict_types=1);
 
 namespace Konekt\User\Tests;
 
-use Konekt\Address\Models\Person;
 use Konekt\User\Models\Profile;
 use Konekt\User\Models\User;
+use Konekt\User\Tests\Factories\PersonFactory;
+use Konekt\User\Tests\Factories\UserFactory;
 
 class UserTest extends TestCase
 {
@@ -35,8 +36,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_have_a_profile()
     {
-        $user = factory(User::class)->create();
-        $person = factory(Person::class)->create([
+        $user = UserFactory::new()->create();
+        $person = PersonFactory::new()->create([
             'firstname' => 'Fritz',
             'lastname' => 'Teufel',
         ]);

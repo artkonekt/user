@@ -22,6 +22,9 @@ use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Models\Profile;
 use Konekt\User\Models\User;
 use Konekt\User\Tests\Dummies\DummyAvatar;
+use Konekt\User\Tests\Factories\PersonFactory;
+use Konekt\User\Tests\Factories\ProfileFactory;
+use Konekt\User\Tests\Factories\UserFactory;
 
 class ProfileTest extends TestCase
 {
@@ -35,8 +38,8 @@ class ProfileTest extends TestCase
     /** @test */
     public function it_can_be_created()
     {
-        $user = factory(User::class)->create();
-        $person = factory(Person::class)->create();
+        $user = UserFactory::new()->create();
+        $person = PersonFactory::new()->create();
 
         $profile = Profile::create([
             'user_id' => $user->id,
@@ -50,8 +53,8 @@ class ProfileTest extends TestCase
     /** @test */
     public function person_can_be_retrieved()
     {
-        $user = factory(User::class)->create();
-        $person = factory(Person::class)->create();
+        $user = UserFactory::new()->create();
+        $person = PersonFactory::new()->create();
 
         $profile = Profile::create([
             'user_id' => $user->id,
@@ -64,8 +67,8 @@ class ProfileTest extends TestCase
     /** @test */
     public function it_can_be_assigned_to_a_user()
     {
-        $user = factory(User::class)->create();
-        $person = factory(Person::class)->create();
+        $user = UserFactory::new()->create();
+        $person = PersonFactory::new()->create();
 
         $user->profile()->create(['person_id' => $person->id]);
 
@@ -76,7 +79,7 @@ class ProfileTest extends TestCase
     /** @test */
     public function arbitrary_avatar_type_can_be_assigned_to_it()
     {
-        $profile = factory(Profile::class)->create();
+        $profile = ProfileFactory::new()->create();
         $profile->setAvatar(DummyAvatar::create('helloafrica'));
 
         $this->assertTrue($profile->hasAvatar());
@@ -89,7 +92,7 @@ class ProfileTest extends TestCase
     /** @test */
     public function avatar_can_be_removed()
     {
-        $profile = factory(Profile::class)->create();
+        $profile = ProfileFactory::new()->create();
         $profile->setAvatar(DummyAvatar::create('hellomotherland'));
         $profile->save();
 
@@ -107,7 +110,7 @@ class ProfileTest extends TestCase
     /** @test */
     public function removing_an_avatar_invokes_the_delete_function_of_the_avatar_type()
     {
-        $profile = factory(Profile::class)->create();
+        $profile = ProfileFactory::new()->create();
         $uploadedFile = UploadedFile::fake()->image('horse.jpg', 85, 85);
         $profile->setAvatar(StorageAvatar::upload($uploadedFile));
         $profile->save();

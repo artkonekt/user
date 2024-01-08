@@ -16,6 +16,7 @@ namespace Konekt\User\Tests;
 use Konekt\User\Avatar\Gravatar;
 use Konekt\User\Contracts\Avatar;
 use Konekt\User\Models\Profile;
+use Konekt\User\Tests\Factories\ProfileFactory;
 
 class GravatarTest extends TestCase
 {
@@ -35,7 +36,7 @@ class GravatarTest extends TestCase
     public function works_with_the_profile_model()
     {
         /** @var Profile $profile */
-        $profile = factory(Profile::class)->create();
+        $profile = ProfileFactory::new()->create();
         // This sucks like hell, email should be taken from user/profile and not hardcoded like this
         $avatar = Gravatar::create('user@example.com');
 

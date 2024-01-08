@@ -18,6 +18,7 @@ use Konekt\User\Contracts\UserType as UserTypeContract;
 use Konekt\User\Models\User;
 use Konekt\User\Models\UserType;
 use Konekt\User\Tests\Dummies\MyUserType;
+use Konekt\User\Tests\Factories\UserFactory;
 use UnexpectedValueException;
 
 class UserTypeTest extends TestCase
@@ -25,7 +26,7 @@ class UserTypeTest extends TestCase
     /** @test */
     public function type_field_is_an_enum()
     {
-        $admin = factory(User::class)->create(['type' => UserType::ADMIN]);
+        $admin = UserFactory::new()->create(['type' => UserType::ADMIN]);
 
         $this->assertInstanceOf(UserTypeContract::class, $admin->type);
         $this->assertInstanceOf(Enum::class, $admin->type);
@@ -34,7 +35,7 @@ class UserTypeTest extends TestCase
     /** @test */
     public function type_can_be_client()
     {
-        $client = factory(User::class)->create(['type' => 'client']);
+        $client = UserFactory::new()->create(['type' => 'client']);
 
         $this->assertTrue($client->type->equals(UserType::CLIENT()));
     }
@@ -42,7 +43,7 @@ class UserTypeTest extends TestCase
     /** @test */
     public function type_can_be_admin()
     {
-        $client = factory(User::class)->create(['type' => 'admin']);
+        $client = UserFactory::new()->create(['type' => 'admin']);
 
         $this->assertTrue($client->type->equals(UserType::ADMIN()));
     }
@@ -50,7 +51,7 @@ class UserTypeTest extends TestCase
     /** @test */
     public function type_can_be_api()
     {
-        $client = factory(User::class)->create(['type' => 'api']);
+        $client = UserFactory::new()->create(['type' => 'api']);
 
         $this->assertTrue($client->type->equals(UserType::API()));
     }
@@ -60,7 +61,7 @@ class UserTypeTest extends TestCase
     {
         $this->expectException(UnexpectedValueException::class);
 
-        factory(User::class)->create(['type' => 'mastergetzi']);
+        UserFactory::new()->create(['type' => 'mastergetzi']);
     }
 
     /** @test */
@@ -71,9 +72,9 @@ class UserTypeTest extends TestCase
             MyUserType::class
         );
 
-        $default = factory(User::class)->create();
-        $master = factory(User::class)->create(['type' => 'master']);
-        $servant = factory(User::class)->create(['type' => 'servant']);
+        $default = UserFactory::new()->create();
+        $master = UserFactory::new()->create(['type' => 'master']);
+        $servant = UserFactory::new()->create(['type' => 'servant']);
 
         $this->assertEquals(MyUserType::defaultValue(), $default->type->value());
         $this->assertTrue($master->type->equals(MyUserType::MASTER()));
@@ -90,6 +91,6 @@ class UserTypeTest extends TestCase
             MyUserType::class
         );
 
-        factory(User::class)->create(['type' => 'client']);
+        UserFactory::new()->create(['type' => 'client']);
     }
 }

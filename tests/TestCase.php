@@ -22,16 +22,16 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    /** @var Generator */
-    protected $faker;
+//    /** @var Generator */
+//    protected $faker;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->withFactories(__DIR__ . '/factories');
+        //$this->withFactories(__DIR__ . '/factories');
         $this->setUpDatabase($this->app);
-        $this->faker = \Faker\Factory::create();
+//        $this->faker = \Faker\Factory::create();
     }
 
     /**

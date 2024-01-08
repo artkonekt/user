@@ -4,17 +4,23 @@ declare(strict_types=1);
 
 namespace Konekt\User\Tests\Factories;
 
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Konekt\User\Models\User;
 
-$factory->define(User::class, function (Faker $faker) {
-    static $password;
+class UserFactory extends Factory
+{
+    protected $model = User::class;
 
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => Str::random(10),
-    ];
-});
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => Crypt::encrypt('secret'),
+            'remember_token' => Str::random(10),
+        ];
+    }
+}

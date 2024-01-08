@@ -18,6 +18,7 @@ use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
 use Konekt\User\Models\User;
+use Konekt\User\Tests\Factories\UserFactory;
 
 class UserEventsTest extends TestCase
 {
@@ -29,7 +30,7 @@ class UserEventsTest extends TestCase
     {
         $this->expectsEvents(UserWasCreated::class);
 
-        factory(User::class)->create();
+        UserFactory::new()->create();
     }
 
     /**
@@ -39,7 +40,7 @@ class UserEventsTest extends TestCase
     {
         Event::fake();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $user->inactivate();
 
         Event::assertDispatched(UserWasInactivated::class);
@@ -57,7 +58,7 @@ class UserEventsTest extends TestCase
             UserWasDeleted::class
         ]);
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $user->delete();
     }

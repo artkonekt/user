@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace Konekt\User\Tests\Factories;
 
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Konekt\Address\Models\Person;
 
-$factory->define(Person::class, function (Faker $faker) {
-    return [
-        'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName
-    ];
-});
+class PersonFactory extends Factory
+{
+    protected $model = Person::class;
+
+    public function definition(): array
+    {
+        return [
+            'firstname' => fake()->firstName,
+            'lastname' => fake()->lastName,
+        ];
+    }
+}
