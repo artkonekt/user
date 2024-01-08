@@ -8,10 +8,11 @@
 - BC: Changed the `UserType` interface so that it now extends the `EnumInterface`
 - Dropped Laravel 9 support
 - Dropped PHP 8.0 support
+- Added Laravel 11 support
 - Changed minimum version requirements to:
   - Enum v4.1
   - Address v3.0
-  - Doctrine DBAL v3.5.1
+  - Doctrine DBAL v3.5.1/v4.x
 - Got rid of the legacy Laravel factories in tests
 
 ---
