@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Konekt\User\Tests;
 
-use Faker\Generator;
 use Konekt\Address\Providers\ModuleServiceProvider as AddressModule;
 use Konekt\Concord\ConcordServiceProvider;
 use Konekt\LaravelMigrationCompatibility\LaravelMigrationCompatibilityProvider;
@@ -22,16 +21,11 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-//    /** @var Generator */
-//    protected $faker;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        //$this->withFactories(__DIR__ . '/factories');
         $this->setUpDatabase($this->app);
-//        $this->faker = \Faker\Factory::create();
     }
 
     /**

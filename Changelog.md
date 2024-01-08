@@ -12,6 +12,7 @@
   - Enum v4.1
   - Address v3.0
   - Doctrine DBAL v3.5.1
+- Got rid of the legacy Laravel factories in tests
 
 ---
 

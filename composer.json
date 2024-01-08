@@ -31,8 +31,7 @@
     "require-dev": {
         "orchestra/testbench": "^8.0",
         "phpunit/phpunit": "^10.0",
-        "mockery/mockery": "^1.6.2",
-        "laravel/legacy-factories": "^1.0.4"
+        "mockery/mockery": "^1.6.2"
     },
     "autoload-dev": {
         "psr-4": {
