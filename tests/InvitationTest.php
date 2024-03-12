@@ -374,7 +374,7 @@ class InvitationTest extends TestCase
         $invitation = Invitation::createInvitation('clima@cloud.it', null, null, [], 18);
 
         $this->assertInstanceOf(Invitation::class, $invitation);
-        $this->assertEquals(18, round($invitation->expires_at->floatDiffInDays()));
+        $this->assertEquals(18, round($invitation->expires_at->floatDiffInDays(null, true)));
     }
 
     /** @test */
@@ -393,7 +393,7 @@ class InvitationTest extends TestCase
         $this->assertEquals('Lego Floor', $invitation->name);
         $this->assertTrue(UserType::API()->equals($invitation->type));
         $this->assertEquals(['role' => 'shop admin'], $invitation->options);
-        $this->assertEquals(23, round($invitation->expires_at->floatDiffInDays()));
+        $this->assertEquals(23, round($invitation->expires_at->floatDiffInDays(null, true)));
     }
 
     /** @test */
