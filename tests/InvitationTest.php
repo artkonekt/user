@@ -217,7 +217,7 @@ class InvitationTest extends TestCase
 
         $this->assertEquals(
             config('konekt.user.invitation.default_expiry_days'),
-            round($invitation->expires_at->floatDiffInDays()),
+            round($invitation->expires_at->floatDiffInDays(null, true)),
         );
     }
 
