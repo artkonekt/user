@@ -8,6 +8,13 @@ The `UserType` interface extends the v4.1 `EnumInterface`, meaning it has more m
 It's almost certain that you don't need to do anything with it, because the base Enum class implements
 those methods. Regardless of that, it's a breaking change anyway.
 
+### Minimum requirements
+
+The minimal requirements as of v3.0 are:
+
+- PHP 8.1+
+- Laravel 10.x or 11.x
+
 ## 1.x -> 2.x
 
 The package has dropped Laravel 5 support. The new minimal requirements are:
