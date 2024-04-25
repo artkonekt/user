@@ -2,8 +2,8 @@
 
 ## 3.x Series
 
-## Unreleased
-##### 2023-XX-YY
+## 3.0.0
+##### 2024-04-25
 
 - BC: Changed the `UserType` interface so that it now extends the `EnumInterface`
 - Dropped Laravel 9 support
