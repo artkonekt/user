@@ -29,7 +29,7 @@ Now you should see this:
 +----+--------------------+--------+---------+-------------+-----------------+
 | #  | Name               | Kind   | Version | Id          | Namespace       |
 +----+--------------------+--------+---------+-------------+-----------------+
-| 1. | Konekt User Module | Module | 3.0.0  | konekt.user | Konekt\User     |
+| 1. | Konekt User Module | Module | 3.1.0   | konekt.user | Konekt\User     |
 +----+--------------------+--------+---------+-------------+-----------------+
 ```
 
