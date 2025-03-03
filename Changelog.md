@@ -2,6 +2,12 @@
 
 ## 3.x Series
 
+## Unreleased
+##### 2025-XX-YY
+
+- Added PHP 8.4 support
+- Added Laravel 12 support
+
 ## 3.0.0
 ##### 2024-04-25
 
