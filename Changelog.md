@@ -2,8 +2,8 @@
 
 ## 3.x Series
 
-## Unreleased
-##### 2025-XX-YY
+## 3.1.1
+##### 2025-09-05
 
 - Removed the `gd` PHP extension requirement from `composer.json` - most likely it was never actually needed
 
