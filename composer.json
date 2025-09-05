@@ -17,7 +17,6 @@
     },
     "require": {
         "php": "^8.1",
-        "ext-gd": "*",
         "konekt/concord": "^1.13",
         "konekt/enum": "^4.1",
         "konekt/address": "^3.0",
