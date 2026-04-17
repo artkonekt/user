@@ -2,10 +2,11 @@
 
 ## 3.x Series
 
-## Unreleased
-##### 2026-XX-YY
+## 3.2.0
+##### 2026-04-17
 
 - Added Laravel 13 support
+- Added PHP 8.5 support
 - Dropped Laravel 10 support
 - Dropped PHP 8.1 & 8.2 support
 - Changed the minimum Laravel version requirements to v11.46.2, v12.50 and v13.0
